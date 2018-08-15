@@ -1,14 +1,16 @@
 package com.rollingstone.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-import java.util.Date;
-
-@Entity(name = "store_pickup")
+@Entity
+@Table(name = "ROLLINGSTONE_STORE_PICKUP")
 public class StorePickup {
 
 	@Id

@@ -11,10 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Entity(name = "SHIPPING")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "ROLLINGSTONE_SHIPPING_HDR")
 public class Shipping {
 
 	@Id
@@ -52,15 +56,32 @@ public class Shipping {
 	@Column(name = "SHIP_CARRIER", nullable = false)
 	private String shipCarrier;
 	
-	@OneToOne
-	@JoinColumn(name="ORDER_ID")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ORDER_ID", nullable = false)
+	@JsonIgnore
 	private Order order;
 	
 	
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public Set<ShippingLineItem> getShippingItems() {
+		return shippingItems;
+	}
+
+	public void setShippingItems(Set<ShippingLineItem> shippingItems) {
+		this.shippingItems = shippingItems;
+	}
+
 	/*
 	 * One Account may have Many place many Orders
 	 */
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "shippment")
     private Set<ShippingLineItem> shippingItems = new HashSet<ShippingLineItem>();
 
 	public Long getId() {

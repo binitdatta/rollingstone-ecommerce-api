@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "CATEGORY")
+@Entity(name = "ROLLINGSTONE_CATEGORY")
 public class Category {
 
 	@Id

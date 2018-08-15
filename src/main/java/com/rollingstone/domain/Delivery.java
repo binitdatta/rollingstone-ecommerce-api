@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "delivery")
+@Entity
+@Table(name = "ROLLINGSTONE_DELIVERY")
 public class Delivery {
 
 	@Id

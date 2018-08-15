@@ -3,6 +3,7 @@ package com.rollingstone.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,8 @@ public class Account {
 	private Long id;
 	
 
+	@Column(name="account_name", nullable = false)
+	String accountName;
 	
 	@OneToOne
 	@JoinColumn(name="USER_PROFILE_ID")
@@ -70,6 +73,15 @@ public class Account {
 
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
+	}
+
+	
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 
 	public Account(Long id, User user, Set<Address> addresses, Set<Order> orders) {
