@@ -10,15 +10,47 @@ http://localhost:8080/solcommerce/pdp-service/account/1/order/1
 
 {  
    "id":1,
-   "offerId":234567,
-   "productId":2,
-   "availableDate":"2018-09-12T05:00:00.000+0000",
-   "daysInTransit":12,
-   "deleveryCharge":39.0,
-   "haulsAwayMessage":"Will Haul Away old appliances for free",
-   "hasSpecialOffers":true,
-   "freeDeliveryAvailable":true,
-   "available":true
+   "orderNumber":"2345678",
+   "orderTrackingNumber":"FEDEX234567",
+   "orderDate":"2018-08-24",
+   "orderTotal":2500,
+   "userName":"bdatta",
+   "firstName":"Binit",
+   "lastName":"Datta",
+   "sex":"M",
+   "memberType":null,
+   "rgistrationDate":null,
+   "shippingHouseNumber":"5678",
+   "shippingStreetAddress":"234 Main Street",
+   "shippingCity":"Bloomington",
+   "shippingState":"MN",
+   "shippingZipCode":"50438",
+   "billingHouseNumber":"5678",
+   "billingStreetAddress":"234 Main Street",
+   "billingCity":"Bloomington",
+   "billingState":"MN",
+   "billingZipCode":"50438",
+   "accountNumber":"",
+   "accountName":"Binit Datta",
+   "orderItems":[  
+      {  
+         "id":1,
+         "productId":null,
+         "productCode":"P2345872",
+         "quantity":"1",
+         "unitPrice":2000,
+         "unitOfMeasurement":"PCS"
+      },
+      {  
+         "id":2,
+         "productId":null,
+         "productCode":"P2345873",
+         "quantity":"1",
+         "unitPrice":2000,
+         "unitOfMeasurement":"PCS"
+      }
+   ],
+
 }
 
 
@@ -39,30 +71,70 @@ POST http://localhost:8080/ssolcommerce/pdp-service/account/1/order/
 Body
 
 {
-  "offerId": 234568,
-  "productId": 2,
-  "availableDate": "2018-09-12",
-  "daysInTransit": 9,
-  "deleveryCharge": 45.00,
-  "haulsAwayMessage": "Will Haul Away old appliances for free",
-  "hasSpecialOffers": true,
-  "freeDeliveryAvailable": true,
-  "available": true
+  "orderNumber": "ON234567",
+  "orderTrackingNumber": "FEDEX12345678",
+  "orderDate": "2018-08-21",
+  "user": {
+    "id": 1
+  },
+  "shippingAddress": {
+    "id": 1
+  },
+  "billingAddress": {
+    "id": 1
+  },
+  "account": {
+    "id": 1
+  }
 }
 
 Results
 
 {  
    "id":2,
-   "offerId":234568,
-   "productId":2,
-   "availableDate":"2018-09-12T00:00:00.000+0000",
-   "daysInTransit":9,
-   "deleveryCharge":45.0,
-   "haulsAwayMessage":"Will Haul Away old appliances for free",
-   "hasSpecialOffers":true,
-   "available":true,
-   "freeDeliveryAvailable":true
+   "orderNumber":"ON234567",
+   "orderTrackingNumber":"FEDEX12345678",
+   "orderDate":"2018-08-21T00:00:00.000+0000",
+   "orderTotal":null,
+   "user":{  
+      "id":1,
+      "userName":null,
+      "firstName":null,
+      "lastName":null,
+      "sex":null,
+      "memberType":null,
+      "rgistrationDate":null
+   },
+   "shippingAddress":{  
+      "id":1,
+      "houseNumber":null,
+      "streetAddress":null,
+      "city":null,
+      "state":null,
+      "zipCode":null,
+      "account":null
+   },
+   "billingAddress":{  
+      "id":1,
+      "houseNumber":null,
+      "streetAddress":null,
+      "city":null,
+      "state":null,
+      "zipCode":null,
+      "account":null
+   },
+   "account":{  
+      "id":1,
+      "accountNumber":null,
+      "accountName":null,
+      "user":null
+   },
+   "orderItems":[  
+
+   ],
+   "shipments":[  
+
+   ]
 }
 
 

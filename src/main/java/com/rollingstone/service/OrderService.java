@@ -39,7 +39,7 @@ public class OrderService {
 	
 	public Page<Order> getOrderByPage(Integer pageNumber, Integer pageSize){
 		
-		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("houseNumber").descending());
+		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("orderNumber").descending());
 		
 		
 		return orderRepository.findAll(pageable);		

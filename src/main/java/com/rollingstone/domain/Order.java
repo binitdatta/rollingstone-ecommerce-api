@@ -55,7 +55,6 @@ public class Order {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ACCOUNT_ID", nullable = false)
-	@JsonIgnore
 	Account account;
 
 	
