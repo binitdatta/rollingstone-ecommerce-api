@@ -56,17 +56,17 @@ http://localhost:8080/solcommerce/pdp-service/account/1/order/1
 
 2. https://www.baeldung.com/spring-boot-jsoncomponent
 
-2. Get All Deliveries
+2. Get All Order
 
 http://localhost:8080/ssolcommerce/pdp-service/account/{accountId}/order/bypage
 http://localhost:8080/solcommerce/pdp-service/account/1/order/bypage
 
 
 
-3. Create a new Delivery
+3. Create a new Order
 
 POST http://localhost:8080/ssolcommerce/pdp-service/account/{accountId}/order
-POST http://localhost:8080/ssolcommerce/pdp-service/account/1/order/
+POST http://localhost:8080/ssolcommerce/pdp-service/account/1/order
 
 Body
 
@@ -138,204 +138,122 @@ Results
 }
 
 
-4. Get All Again
-
-http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery//bypage
-
-
-{  
-   "content":[  
-      {  
-         "id":1,
-         "offerId":234567,
-         "productId":2,
-         "availableDate":"2018-09-12T05:00:00.000+0000",
-         "daysInTransit":12,
-         "deleveryCharge":39.0,
-         "haulsAwayMessage":"Will Haul Away old appliances for free",
-         "hasSpecialOffers":true,
-         "available":true,
-         "freeDeliveryAvailable":true
-      },
-      {  
-         "id":2,
-         "offerId":234568,
-         "productId":2,
-         "availableDate":"2018-09-12T00:00:00.000+0000",
-         "daysInTransit":9,
-         "deleveryCharge":45.0,
-         "haulsAwayMessage":"Will Haul Away old appliances for free",
-         "hasSpecialOffers":true,
-         "available":true,
-         "freeDeliveryAvailable":true
-      }
-   ],
-   "pageable":{  
-      "sort":{  
-         "sorted":true,
-         "unsorted":false
-      },
-      "offset":0,
-      "pageSize":20,
-      "pageNumber":0,
-      "paged":true,
-      "unpaged":false
-   },
-   "totalPages":1,
-   "totalElements":2,
-   "last":true,
-   "size":20,
-   "number":0,
-   "numberOfElements":2,
-   "first":true,
-   "sort":{  
-      "sorted":true,
-      "unsorted":false
-   }
-}
-
 
 4. Update an Object
 
-PUT http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{orderId}/delivery/{deliveryId}
+PUT http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{id}
 
-http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery/1
+http://localhost:8080/solcommerce/pdp-service/account/1/order/2
 
 Body
 
 {
-  "id": 2,
-  "offerId": 234568,
-  "productId": 2,
-  "availableDate": "2018-09-12",
-  "daysInTransit": 9,
-  "deleveryCharge": 45,
-  "haulsAwayMessage": "Will Haul Away old appliances for $25.00",
-  "hasSpecialOffers": true,
-  "freeDeliveryAvailable": true,
-  "available": true
+	"id":2,
+  "orderNumber": "ON234567",
+  "orderTrackingNumber": "FEDEX12345678",
+  "orderDate": "2018-08-21",
+  "user": {
+    "id": 1
+  },
+  "shippingAddress": {
+    "id": 1
+  },
+  "billingAddress": {
+    "id": 1
+  },
+  "account": {
+    "id": 1
+  }
 }
 
 Results
 
 {  
    "id":2,
-   "offerId":234568,
-   "productId":2,
-   "availableDate":"2018-09-12T00:00:00.000+0000",
-   "daysInTransit":9,
-   "deleveryCharge":45.0,
-   "haulsAwayMessage":"Will Haul Away old appliances for $25.00",
-   "hasSpecialOffers":true,
-   "available":true,
-   "freeDeliveryAvailable":true
+   "orderNumber":"ON2345699",
+   "orderTrackingNumber":"FEDEX1299999",
+   "orderDate":"2018-08-26T00:00:00.000+0000",
+   "orderTotal":null,
+   "user":{  
+      "id":1,
+      "userName":null,
+      "firstName":null,
+      "lastName":null,
+      "sex":null,
+      "memberType":null,
+      "rgistrationDate":null
+   },
+   "shippingAddress":{  
+      "id":1,
+      "houseNumber":null,
+      "streetAddress":null,
+      "city":null,
+      "state":null,
+      "zipCode":null,
+      "account":null
+   },
+   "billingAddress":{  
+      "id":1,
+      "houseNumber":null,
+      "streetAddress":null,
+      "city":null,
+      "state":null,
+      "zipCode":null,
+      "account":null
+   },
+   "account":{  
+      "id":1,
+      "accountNumber":null,
+      "accountName":null,
+      "user":null
+   },
+   "orderItems":[  
+
+   ],
+   "shipments":[  
+
+   ]
 }
 
-4. Get All Accounts
+4. Get The Order
 
-GET http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery//bypage
+GET http://localhost:8080/solcommerce/pdp-service/account/1/order/2
 
 
 
 
 {  
-   "content":[  
-      {  
-         "id":1,
-         "offerId":234567,
-         "productId":2,
-         "availableDate":"2018-09-12T05:00:00.000+0000",
-         "daysInTransit":12,
-         "deleveryCharge":39.0,
-         "haulsAwayMessage":"Will Haul Away old appliances for free",
-         "hasSpecialOffers":true,
-         "available":true,
-         "freeDeliveryAvailable":true
-      },
-      {  
-         "id":2,
-         "offerId":234568,
-         "productId":2,
-         "availableDate":"2018-09-12T00:00:00.000+0000",
-         "daysInTransit":9,
-         "deleveryCharge":45.0,
-         "haulsAwayMessage":"Will Haul Away old appliances for $25.00",
-         "hasSpecialOffers":true,
-         "available":true,
-         "freeDeliveryAvailable":true
-      }
-   ],
-   "pageable":{  
-      "sort":{  
-         "sorted":true,
-         "unsorted":false
-      },
-      "offset":0,
-      "pageSize":20,
-      "pageNumber":0,
-      "paged":true,
-      "unpaged":false
-   },
-   "totalPages":1,
-   "totalElements":2,
-   "last":true,
-   "size":20,
-   "number":0,
-   "numberOfElements":2,
-   "first":true,
-   "sort":{  
-      "sorted":true,
-      "unsorted":false
-   }
+   "id":2,
+   "orderNumber":"ON2345699",
+   "orderTrackingNumber":"FEDEX1299999",
+   "orderDate":"2018-08-25",
+   "orderTotal":null,
+   "userName":"bdatta",
+   "firstName":"Binit",
+   "lastName":"Datta",
+   "sex":"M",
+   "memberType":null,
+   "rgistrationDate":null,
+   "shippingHouseNumber":"5678",
+   "shippingStreetAddress":"234 Main Street",
+   "shippingCity":"Bloomington",
+   "shippingState":"MN",
+   "shippingZipCode":"50438",
+   "billingHouseNumber":"5678",
+   "billingStreetAddress":"234 Main Street",
+   "billingCity":"Bloomington",
+   "billingState":"MN",
+   "billingZipCode":"50438",
+   "accountNumber":"",
+   "accountName":"Binit Datta",
+   "orderItems":[  
+
+   ]
 }
 
-4. Delete a Deivery
+4. Delete an Order
 
-DELETE http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{orderId}/delivery/{deliveryId}
-
-http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery/1
+DELETE http://localhost:8080/solcommerce/pdp-service/account/1/order/2
 
 
-5. Confirm with GET
 
-GET http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery//bypage
-
-
-{  
-   "content":[  
-      {  
-         "id":2,
-         "offerId":234568,
-         "productId":2,
-         "availableDate":"2018-09-12T00:00:00.000+0000",
-         "daysInTransit":9,
-         "deleveryCharge":45.0,
-         "haulsAwayMessage":"Will Haul Away old appliances for $25.00",
-         "hasSpecialOffers":true,
-         "available":true,
-         "freeDeliveryAvailable":true
-      }
-   ],
-   "pageable":{  
-      "sort":{  
-         "sorted":true,
-         "unsorted":false
-      },
-      "offset":0,
-      "pageSize":20,
-      "pageNumber":0,
-      "paged":true,
-      "unpaged":false
-   },
-   "last":true,
-   "totalPages":1,
-   "totalElements":1,
-   "size":20,
-   "number":0,
-   "numberOfElements":1,
-   "first":true,
-   "sort":{  
-      "sorted":true,
-      "unsorted":false
-   }
-}
