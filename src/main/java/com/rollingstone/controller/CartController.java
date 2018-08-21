@@ -49,7 +49,7 @@ public class CartController {
 		return cart;
 	}
 	
-	@GetMapping("solcommerce/pdp-service/cart/{accountId}/cart/bypage")
+	@GetMapping("solcommerce/pdp-service/{accountId}/cart/bypage")
 	Page<Cart> getCartsByPage(
 			@RequestParam(value="pagenumber", required = true, defaultValue="0") Integer pageNumber,
 			@RequestParam(value="pagesize", required = true, defaultValue="20") Integer pageSize)

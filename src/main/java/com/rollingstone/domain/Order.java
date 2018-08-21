@@ -39,7 +39,7 @@ public class Order {
 	private Date orderDate;
 	
 	@Column(name="order_total", nullable=false)
-	String orderTotal;
+	Double orderTotal;
 	
 	@OneToOne
 	@JoinColumn(name="USER_PROFILE_ID")
@@ -63,7 +63,7 @@ public class Order {
 	 * One Account may have Many place many Orders
 	 */
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
-    private Set<OrderLineItem> orders = new HashSet<OrderLineItem>();
+    private Set<OrderLineItem> orderItems = new HashSet<OrderLineItem>();
 	
 	/*
 	 * One Order may have Many Shipments
@@ -112,12 +112,12 @@ public class Order {
 	}
 
 
-	public String getOrderTotal() {
+	public Double getOrderTotal() {
 		return orderTotal;
 	}
 
 
-	public void setOrderTotal(String orderTotal) {
+	public void setOrderTotal(Double orderTotal) {
 		this.orderTotal = orderTotal;
 	}
 
@@ -152,18 +152,40 @@ public class Order {
 	}
 
 
-	public Set<OrderLineItem> getOrders() {
-		return orders;
+	
+
+	public Account getAccount() {
+		return account;
 	}
 
 
-	public void setOrders(Set<OrderLineItem> orders) {
-		this.orders = orders;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 
-	public Order(Long id, String orderNumber, String orderTrackingNumber, Date orderDate, String orderTotal, User user,
-			Address shippingAddress, Address billingAddress, Set<OrderLineItem> orders) {
+	public Set<Shipping> getShipments() {
+		return shipments;
+	}
+
+
+	public void setShipments(Set<Shipping> shipments) {
+		this.shipments = shipments;
+	}
+
+
+	public Set<OrderLineItem> getOrderItems() {
+		return orderItems;
+	}
+
+
+	public void setOrderItems(Set<OrderLineItem> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+
+	public Order(Long id, String orderNumber, String orderTrackingNumber, Date orderDate, Double orderTotal, User user,
+			Address shippingAddress, Address billingAddress, Set<OrderLineItem> orderItems) {
 		super();
 		this.id = id;
 		this.orderNumber = orderNumber;
@@ -173,12 +195,12 @@ public class Order {
 		this.user = user;
 		this.shippingAddress = shippingAddress;
 		this.billingAddress = billingAddress;
-		this.orders = orders;
+		this.orderItems = orderItems;
 	}
 
 
-	public Order(Long id, String orderNumber, String orderTrackingNumber, Date orderDate, String orderTotal, User user,
-			Address shippingAddress, Address billingAddress, Set<OrderLineItem> orders, Set<Shipping> shipments) {
+	public Order(Long id, String orderNumber, String orderTrackingNumber, Date orderDate, Double orderTotal, User user,
+			Address shippingAddress, Address billingAddress, Set<OrderLineItem> orderItems, Set<Shipping> shipments) {
 		super();
 		this.id = id;
 		this.orderNumber = orderNumber;
@@ -188,7 +210,7 @@ public class Order {
 		this.user = user;
 		this.shippingAddress = shippingAddress;
 		this.billingAddress = billingAddress;
-		this.orders = orders;
+		this.orderItems = orderItems;
 		this.shipments = shipments;
 	}
 
@@ -198,11 +220,15 @@ public class Order {
 	}
 
 
+	
+
+
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", orderNumber=" + orderNumber + ", orderTrackingNumber=" + orderTrackingNumber
 				+ ", orderDate=" + orderDate + ", orderTotal=" + orderTotal + ", user=" + user + ", shippingAddress="
-				+ shippingAddress + ", billingAddress=" + billingAddress + ", orders=" + orders + "]";
+				+ shippingAddress + ", billingAddress=" + billingAddress + ", account=" + account + ", orderItems="
+				+ orderItems + ", shipments=" + shipments + "]";
 	}
 
 
@@ -216,7 +242,7 @@ public class Order {
 		result = prime * result + ((orderNumber == null) ? 0 : orderNumber.hashCode());
 		result = prime * result + ((orderTotal == null) ? 0 : orderTotal.hashCode());
 		result = prime * result + ((orderTrackingNumber == null) ? 0 : orderTrackingNumber.hashCode());
-		result = prime * result + ((orders == null) ? 0 : orders.hashCode());
+		result = prime * result + ((orderItems == null) ? 0 : orderItems.hashCode());
 		result = prime * result + ((shippingAddress == null) ? 0 : shippingAddress.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -262,10 +288,10 @@ public class Order {
 				return false;
 		} else if (!orderTrackingNumber.equals(other.orderTrackingNumber))
 			return false;
-		if (orders == null) {
-			if (other.orders != null)
+		if (orderItems == null) {
+			if (other.orderItems != null)
 				return false;
-		} else if (!orders.equals(other.orders))
+		} else if (!orderItems.equals(other.orderItems))
 			return false;
 		if (shippingAddress == null) {
 			if (other.shippingAddress != null)

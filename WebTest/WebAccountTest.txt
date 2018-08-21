@@ -1,0 +1,242 @@
+How to Test the Account REST API
+
+1. Get All Accounts By Page
+
+URL : GET http://localhost:8080/solcommerce/pdp-service/account/bypage
+
+Payload
+
+{  
+   "content":[  
+      {  
+         "id":4,
+         "accountName":"Steven Smith",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         }
+      },
+      {  
+         "id":5,
+         "accountName":"KCM Modi",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         }
+      },
+      {  
+         "id":1,
+         "accountName":"Binit Datta",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         }
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "last":true,
+   "totalPages":1,
+   "totalElements":3,
+   "size":20,
+   "number":0,
+   "first":true,
+   "numberOfElements":3,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+2. How to get a single Account
+
+URL : GET http://localhost:8080/solcommerce/pdp-service/account/4
+
+Payload :
+
+{  
+   "id":4,
+   "accountName":"Steven Smith",
+   "user":{  
+      "id":1,
+      "userName":"bdatta",
+      "firstName":"Binit",
+      "lastName":"Datta",
+      "sex":"M",
+      "memberType":"G",
+      "rgistrationDate":"2015-01-01"
+   }
+}
+
+3. How to create a single Account
+
+URL : POST http://localhost:8080/solcommerce/pdp-service/account
+
+Request Body : 
+
+{
+  "accountName": "To be Deleted Account",
+  "user": {
+    "id": 1,
+    "userName": "bdatta",
+    "firstName": "Binit",
+    "lastName": "Datta",
+    "sex": "M",
+    "memberType": "G",
+    "rgistrationDate": "2015-01-01"
+  }
+}
+
+Response Payload :
+
+{  
+   "id":6,
+   "accountName":"To be Deleted Account",
+   "user":{  
+      "id":1,
+      "userName":"bdatta",
+      "firstName":"Binit",
+      "lastName":"Datta",
+      "sex":"M",
+      "memberType":"G",
+      "rgistrationDate":"2015-01-01T00:00:00.000+0000"
+   }
+}
+
+
+4. How to update a single Account
+
+URL : PUT http://localhost:8080/solcommerce/pdp-service/account/6
+
+Request Body
+
+{
+  "id": 6,
+  "accountName": "To be Deleted Account Now Updated",
+  "user": {
+    "id": 1,
+    "userName": "bdatta",
+    "firstName": "Binit",
+    "lastName": "Datta",
+    "sex": "M",
+    "memberType": "G",
+    "rgistrationDate": "2015-01-01T00:00:00.000+0000"
+  }
+}
+
+Response Payload:
+
+{  
+   "id":6,
+   "accountName":"To be Deleted Account Now Updated",
+   "user":{  
+      "id":1,
+      "userName":"bdatta",
+      "firstName":"Binit",
+      "lastName":"Datta",
+      "sex":"M",
+      "memberType":"G",
+      "rgistrationDate":"2015-01-01"
+   }
+}
+
+5. How to delete a single account
+
+URL : DELETE http://localhost:8080/solcommerce/pdp-service/account/6
+
+6. Verify Now with Get All
+
+GET http://localhost:8080/solcommerce/pdp-service/account/bypage
+
+Payload
+
+{  
+   "content":[  
+      {  
+         "id":4,
+         "accountName":"Steven Smith",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         }
+      },
+      {  
+         "id":5,
+         "accountName":"KCM Modi",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         }
+      },
+      {  
+         "id":1,
+         "accountName":"Binit Datta",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         }
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "last":true,
+   "totalPages":1,
+   "totalElements":3,
+   "size":20,
+   "number":0,
+   "first":true,
+   "numberOfElements":3,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+

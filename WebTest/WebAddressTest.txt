@@ -1,0 +1,161 @@
+How to test the Address REST API
+
+1. GET http://localhost:8080/solcommerce/pdp-service/account/1/address/1
+
+{  
+   "id":1,
+   "houseNumber":"5678",
+   "streetAddress":"234 Main Street",
+   "city":"Bloomington",
+   "state":"MN",
+   "zipCode":"50438"
+}
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+2. Get All Accounts
+
+http://localhost:8080/solcommerce/pdp-service/account/1/address/bypage
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "houseNumber":"5678",
+         "streetAddress":"234 Main Street",
+         "city":"Bloomington",
+         "state":"MN",
+         "zipCode":"50438",
+         "accountId":1,
+         "accountName":"Binit Datta"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":1,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":1,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+3. Create a new Addess
+
+POST http://localhost:8080/solcommerce/pdp-service/account/1/address
+
+Body
+
+{
+  "houseNumber": "10280",
+  "streetAddress": "234 Primary Street",
+  "city": "Bloomington",
+  "state": "MN",
+  "zipCode": "50438",
+  "account": {
+    "id": 1
+  }
+}
+
+Results
+
+{
+"id": 3,
+"houseNumber": "10280",
+"streetAddress": "234 Primary Street",
+"city": "Bloomington",
+"state": "MN",
+"zipCode": "50438",
+"accountId": 1,
+"accountName": null
+}
+
+4. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/account/1/address/3
+
+Body
+
+{
+  "id": 3,
+  "houseNumber": "10280",
+  "streetAddress": "234 Primary Updated Street",
+  "city": "Bloomington",
+  "state": "MN",
+  "zipCode": "50438",
+  "account": {
+    "id": 1
+  }
+}
+
+Results
+
+{
+"id": 3,
+"houseNumber": "10280",
+"streetAddress": "234 Primary Updated Street",
+"city": "Bloomington",
+"state": "MN",
+"zipCode": "50438",
+"accountId": 1,
+"accountName": null
+}
+
+4. Delete an Address
+
+DELETE http://localhost:8080/solcommerce/pdp-service/account/1/address/3
+
+5. Confirm with GET
+
+GET http://localhost:8080/solcommerce/pdp-service/account/1/address/bypage
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "houseNumber":"5678",
+         "streetAddress":"234 Main Street",
+         "city":"Bloomington",
+         "state":"MN",
+         "zipCode":"50438",
+         "accountId":1,
+         "accountName":"Binit Datta"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":1,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":1,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}

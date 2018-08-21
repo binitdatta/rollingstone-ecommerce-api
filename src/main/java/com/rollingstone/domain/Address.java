@@ -11,9 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="ROLLINGSTONE_ADDRESS")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Address {
 
 	/*

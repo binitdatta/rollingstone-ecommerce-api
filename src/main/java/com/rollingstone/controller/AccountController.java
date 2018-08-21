@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rollingstone.domain.Account;
-import com.rollingstone.domain.User;
 import com.rollingstone.service.AccountService;
 
 @RestController
@@ -50,6 +48,7 @@ public class AccountController {
 	}
 	
 	@GetMapping("solcommerce/pdp-service/account/bypage")
+	@ResponseBody
 	Page<Account> getAccountsByPage(
 			@RequestParam(value="pagenumber", required = true, defaultValue="0") Integer pageNumber,
 			@RequestParam(value="pagesize", required = true, defaultValue="20") Integer pageSize)

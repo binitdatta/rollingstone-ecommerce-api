@@ -1,0 +1,305 @@
+How to test the Delivery REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{orderId}/delivery/{deliveryId}
+
+http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery/1
+
+{  
+   "id":1,
+   "offerId":234567,
+   "productId":2,
+   "availableDate":"2018-09-12T05:00:00.000+0000",
+   "daysInTransit":12,
+   "deleveryCharge":39.0,
+   "haulsAwayMessage":"Will Haul Away old appliances for free",
+   "hasSpecialOffers":true,
+   "freeDeliveryAvailable":true,
+   "available":true
+}
+
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+2. Get All Deliveries
+
+http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{orderId}/delivery//bypage
+http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery//bypage
+
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "offerId":234567,
+         "productId":2,
+         "availableDate":"2018-09-12T05:00:00.000+0000",
+         "daysInTransit":12,
+         "deleveryCharge":39.0,
+         "haulsAwayMessage":"Will Haul Away old appliances for free",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeDeliveryAvailable":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":1,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":1,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+3. Create a new Delivery
+
+POST http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{orderId}/delivery
+POST http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery
+
+Body
+
+{
+  "offerId": 234568,
+  "productId": 2,
+  "availableDate": "2018-09-12",
+  "daysInTransit": 9,
+  "deleveryCharge": 45.00,
+  "haulsAwayMessage": "Will Haul Away old appliances for free",
+  "hasSpecialOffers": true,
+  "freeDeliveryAvailable": true,
+  "available": true
+}
+
+Results
+
+{  
+   "id":2,
+   "offerId":234568,
+   "productId":2,
+   "availableDate":"2018-09-12T00:00:00.000+0000",
+   "daysInTransit":9,
+   "deleveryCharge":45.0,
+   "haulsAwayMessage":"Will Haul Away old appliances for free",
+   "hasSpecialOffers":true,
+   "available":true,
+   "freeDeliveryAvailable":true
+}
+
+
+4. Get All Again
+
+http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery//bypage
+
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "offerId":234567,
+         "productId":2,
+         "availableDate":"2018-09-12T05:00:00.000+0000",
+         "daysInTransit":12,
+         "deleveryCharge":39.0,
+         "haulsAwayMessage":"Will Haul Away old appliances for free",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeDeliveryAvailable":true
+      },
+      {  
+         "id":2,
+         "offerId":234568,
+         "productId":2,
+         "availableDate":"2018-09-12T00:00:00.000+0000",
+         "daysInTransit":9,
+         "deleveryCharge":45.0,
+         "haulsAwayMessage":"Will Haul Away old appliances for free",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeDeliveryAvailable":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":2,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":2,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+
+4. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{orderId}/delivery/{deliveryId}
+
+http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery/1
+
+Body
+
+{
+  "id": 2,
+  "offerId": 234568,
+  "productId": 2,
+  "availableDate": "2018-09-12",
+  "daysInTransit": 9,
+  "deleveryCharge": 45,
+  "haulsAwayMessage": "Will Haul Away old appliances for $25.00",
+  "hasSpecialOffers": true,
+  "freeDeliveryAvailable": true,
+  "available": true
+}
+
+Results
+
+{  
+   "id":2,
+   "offerId":234568,
+   "productId":2,
+   "availableDate":"2018-09-12T00:00:00.000+0000",
+   "daysInTransit":9,
+   "deleveryCharge":45.0,
+   "haulsAwayMessage":"Will Haul Away old appliances for $25.00",
+   "hasSpecialOffers":true,
+   "available":true,
+   "freeDeliveryAvailable":true
+}
+
+4. Get All Accounts
+
+GET http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery//bypage
+
+
+
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "offerId":234567,
+         "productId":2,
+         "availableDate":"2018-09-12T05:00:00.000+0000",
+         "daysInTransit":12,
+         "deleveryCharge":39.0,
+         "haulsAwayMessage":"Will Haul Away old appliances for free",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeDeliveryAvailable":true
+      },
+      {  
+         "id":2,
+         "offerId":234568,
+         "productId":2,
+         "availableDate":"2018-09-12T00:00:00.000+0000",
+         "daysInTransit":9,
+         "deleveryCharge":45.0,
+         "haulsAwayMessage":"Will Haul Away old appliances for $25.00",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeDeliveryAvailable":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":2,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":2,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+4. Delete a Deivery
+
+DELETE http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{orderId}/delivery/{deliveryId}
+
+http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery/1
+
+
+5. Confirm with GET
+
+GET http://localhost:8080/solcommerce/pdp-service/account/1/order/1/delivery//bypage
+
+
+{  
+   "content":[  
+      {  
+         "id":2,
+         "offerId":234568,
+         "productId":2,
+         "availableDate":"2018-09-12T00:00:00.000+0000",
+         "daysInTransit":9,
+         "deleveryCharge":45.0,
+         "haulsAwayMessage":"Will Haul Away old appliances for $25.00",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeDeliveryAvailable":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "last":true,
+   "totalPages":1,
+   "totalElements":1,
+   "size":20,
+   "number":0,
+   "numberOfElements":1,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}

@@ -125,5 +125,87 @@ VALUES
 'Oranges',
 'Oranges');
 
+INSERT INTO `rsecommerce`.`rollingstone_cart_items`
+(
+`ffm_type`,
+`item_total`,
+`offerid`,
+`price`,
+`product_id`,
+`quantity`,
+`unit`,
+`cart_id`)
+VALUES
+('Delivery',
+2000.00,
+'2345567',
+1950.00,
+1,
+1,
+'PCS',
+2);
 
+INSERT INTO `rsecommerce`.`rollingstone_cart_items`
+(
+`ffm_type`,
+`item_total`,
+`offerid`,
+`price`,
+`product_id`,
+`quantity`,
+`unit`,
+`cart_id`)
+VALUES
+('Delivery',
+2000.00,
+'2345567',
+1950.00,
+2,
+1,
+'PCS',
+2);
+
+INSERT INTO `rsecommerce`.`rollingstone_order_hdr`
+(
+`order_date`,
+`order_number`,
+`order_total`,
+`order_tracking_number`,
+`account_id`,
+`billing_address_id`,
+`shipping_address_id`,
+`user_profile_id`)
+VALUES
+(
+'2018-08-24',
+'2345678',
+2500.00,
+'FEDEX234567',
+1,
+1,
+1,
+1);
+
+INSERT INTO `rsecommerce`.`rollingstone_delivery`
+(
+`arrivaldate`,
+`daysintransit`,
+`deliverycharge`,
+`hasspecialoffers`,
+`haulawaymessage`,
+`isavailable`,
+`isfreedeliveryformembers`,
+`offerid`,
+`product_id`)
+VALUES
+(
+'2018-09-12',
+12,
+39.00,
+1,
+'Will Haul Away old appliances for free',
+1,
+1,
+234567,
+2);
 

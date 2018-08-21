@@ -1,0 +1,111 @@
+How to test the CartItem REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET http://localhost:8080/solcommerce/pdp-service/account/1/cart/2/cartitem/2
+
+{  
+   "id":2,
+   "offerId":2345567,
+   "productId":2,
+   "quantity":1,
+   "unit":"PCS",
+   "price":1950.0,
+   "itemTotal":2000.0,
+   "fulfillmentType":"Delivery",
+   "cartId":2
+}
+
+2. Check the other Item as well
+
+GET http://localhost:8080/solcommerce/pdp-service/account/1/cart/2/cartitem/1
+
+{  
+   "id":1,
+   "offerId":2345567,
+   "productId":1,
+   "quantity":1,
+   "unit":"PCS",
+   "price":1950.0,
+   "itemTotal":2000.0,
+   "fulfillmentType":"Delivery",
+   "cartId":2
+}
+
+
+
+3. Create / Add a new Cart Item
+
+POST http://localhost:8080/solcommerce/pdp-service/account/{accountId}/cart/{cartId}/cartitem
+POST http://localhost:8080/solcommerce/pdp-service/account/1/cart/2/cartitem
+
+Body
+
+{  
+   "offerId":2345568,
+   "productId":3,
+   "quantity":1,
+   "unit":"PCS",
+   "price":1950.0,
+   "itemTotal":2000.0,
+   "fulfillmentType":"Delivery",
+   "cartId":2
+}
+
+
+
+Results
+
+{  
+   "id":3,
+   "offerId":2345568,
+   "productId":3,
+   "quantity":1,
+   "unit":"PCS",
+   "price":1950.0,
+   "itemTotal":2000.0,
+   "fulfillmentType":"Delivery",
+   "cartId":2
+}
+
+4. Update an Object
+
+solcommerce/pdp-service/account/{accountId}/cart/{cartId}/cartitem/{id}
+
+PUT http://localhost:8080/solcommerce/pdp-service/account/1/cart/2/cartitem/3
+
+Body
+
+{  "id":3,
+   "offerId":2345568,
+   "productId":3,
+   "quantity":1,
+   "unit":"PCS",
+   "price":2950.0,
+   "itemTotal":2000.0,
+   "fulfillmentType":"Delivery",
+   "cartId":2
+}
+
+
+Results
+
+{  
+   "id":3,
+   "offerId":2345568,
+   "productId":3,
+   "quantity":1,
+   "unit":"PCS",
+   "price":2950,
+   "itemTotal":2000,
+   "fulfillmentType":"Delivery",
+   "cartId":2
+}
+
+
+
+4. Delete a CartItem
+
+DELETE http://localhost:8080/solcommerce/pdp-service/account/1/cart/2/cartitem/3
+
+solcommerce/pdp-service/account/{accountId}/cart/{cartId}/cartitem/{id}

@@ -29,7 +29,7 @@ public class Cart {
 	private Double cartTotal;
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name = "CART_DATE", unique = true, nullable = false, length = 10)
+	@Column(name = "CART_DATE", unique = false, nullable = false, length = 10)
 	private Date cartDate;
 	
 	@OneToOne
@@ -40,7 +40,7 @@ public class Cart {
 	 * One Account may have Many place many Orders
 	 */
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cart")
-    private Set<CartItem> caretItems = new HashSet<CartItem>();
+    private Set<CartItem> cartItems = new HashSet<CartItem>();
 	
 	public Long getId() {
 		return id;
@@ -74,6 +74,16 @@ public class Cart {
 		this.user = user;
 	}
 
+
+
+
+	public Set<CartItem> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(Set<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
 
 	@Override
 	public int hashCode() {
@@ -133,7 +143,7 @@ public class Cart {
 		this.cartTotal = cartTotal;
 		this.cartDate = cartDate;
 		this.user = user;
-		this.caretItems = caretItems;
+		this.cartItems = caretItems;
 	}
 
 	public Cart() {
@@ -143,7 +153,7 @@ public class Cart {
 	@Override
 	public String toString() {
 		return "Cart [id=" + id + ", cartTotal=" + cartTotal + ", cartDate=" + cartDate + ", user=" + user
-				+ ", caretItems=" + caretItems + "]";
+				+ ", caretItems=" + cartItems + "]";
 	}
 
 	

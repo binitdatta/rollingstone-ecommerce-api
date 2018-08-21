@@ -1,0 +1,276 @@
+How to test the Category REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET http://localhost:8080/solcommerce/pdp-service/category/1
+
+{  
+   "id":1,
+   "categoryName":"Televison",
+   "categoryDescription":"Large Televison"
+}
+
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+2. Get All Accounts
+
+http://localhost:8080/solcommerce/pdp-service/category/bypage
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "categoryName":"Televison",
+         "categoryDescription":"Large Televison"
+      },
+      {  
+         "id":4,
+         "categoryName":"Oranges",
+         "categoryDescription":"Oranges"
+      },
+      {  
+         "id":3,
+         "categoryName":"Food",
+         "categoryDescription":"Food"
+      },
+      {  
+         "id":2,
+         "categoryName":"Electrinics",
+         "categoryDescription":"Electrinics"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "last":true,
+   "totalPages":1,
+   "totalElements":4,
+   "size":20,
+   "number":0,
+   "numberOfElements":4,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+
+
+3. Create a new Category
+
+POST http://localhost:8080/solcommerce/pdp-service/category
+
+Body
+
+{
+  "categoryName": "SmartPhone",
+  "categoryDescription": "SmartPhone above $800"
+}
+
+Results
+
+{
+	"id": 5,
+	"categoryName": "SmartPhone",
+	"categoryDescription": "SmartPhone above $800"
+}
+
+
+4. Get All Again
+
+http://localhost:8080/solcommerce/pdp-service/category/bypage
+
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "categoryName":"Televison",
+         "categoryDescription":"Large Televison"
+      },
+      {  
+         "id":5,
+         "categoryName":"SmartPhone",
+         "categoryDescription":"SmartPhone above $800"
+      },
+      {  
+         "id":4,
+         "categoryName":"Oranges",
+         "categoryDescription":"Oranges"
+      },
+      {  
+         "id":3,
+         "categoryName":"Food",
+         "categoryDescription":"Food"
+      },
+      {  
+         "id":2,
+         "categoryName":"Electrinics",
+         "categoryDescription":"Electrinics"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "last":true,
+   "totalPages":1,
+   "totalElements":5,
+   "size":20,
+   "number":0,
+   "numberOfElements":5,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+4. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/category/5
+
+Body
+
+{
+  "id": 5,
+  "categoryName": "SmartPhone",
+  "categoryDescription": "SmartPhone above $900"
+}
+
+Results
+
+{
+  "id": 5,
+  "categoryName": "SmartPhone",
+  "categoryDescription": "SmartPhone above $900"
+}
+
+4. Get All Accounts
+
+GET http://localhost:8080/solcommerce/pdp-service/category/bypage
+
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "categoryName":"Televison",
+         "categoryDescription":"Large Televison"
+      },
+      {  
+         "id":5,
+         "categoryName":"SmartPhone",
+         "categoryDescription":"SmartPhone above $900"
+      },
+      {  
+         "id":4,
+         "categoryName":"Oranges",
+         "categoryDescription":"Oranges"
+      },
+      {  
+         "id":3,
+         "categoryName":"Food",
+         "categoryDescription":"Food"
+      },
+      {  
+         "id":2,
+         "categoryName":"Electrinics",
+         "categoryDescription":"Electrinics"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "last":true,
+   "totalPages":1,
+   "totalElements":5,
+   "size":20,
+   "number":0,
+   "numberOfElements":5,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+4. Delete an Address
+
+DELETE http://localhost:8080/solcommerce/pdp-service/category/5
+
+
+5. Confirm with GET
+
+GET http://localhost:8080/solcommerce/pdp-service/category/bypage
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "categoryName":"Televison",
+         "categoryDescription":"Large Televison"
+      },
+      {  
+         "id":4,
+         "categoryName":"Oranges",
+         "categoryDescription":"Oranges"
+      },
+      {  
+         "id":3,
+         "categoryName":"Food",
+         "categoryDescription":"Food"
+      },
+      {  
+         "id":2,
+         "categoryName":"Electrinics",
+         "categoryDescription":"Electrinics"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "last":true,
+   "totalPages":1,
+   "totalElements":4,
+   "size":20,
+   "number":0,
+   "numberOfElements":4,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}

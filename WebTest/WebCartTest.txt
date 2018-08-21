@@ -1,0 +1,302 @@
+How to test the Address REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET http://localhost:8080/solcommerce/pdp-service/account/1/cart/2
+
+{  
+   "id":2,
+   "cartTotal":100.0,
+   "cartDate":"2018-08-15",
+   "user":{  
+      "id":1,
+      "userName":"bdatta",
+      "firstName":"Binit",
+      "lastName":"Datta",
+      "sex":"M",
+      "memberType":"G",
+      "rgistrationDate":"2015-01-01"
+   }
+}
+
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+2. Get All Accounts
+
+http://localhost:8080/solcommerce/pdp-service/account/1/cart/bypage
+
+{  
+   "content":[  
+      {  
+         "id":4,
+         "cartTotal":3500.0,
+         "cartDate":"2018-08-14",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         },
+         "cartItems":[  
+
+         ]
+      },
+      {  
+         "id":7,
+         "cartTotal":400.0,
+         "cartDate":"2018-08-19",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         },
+         "cartItems":[  
+
+         ]
+      },
+      {  
+         "id":2,
+         "cartTotal":100.0,
+         "cartDate":"2018-08-15",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         },
+         "cartItems":[  
+            {  
+               "id":1,
+               "offerId":2345567,
+               "productId":1,
+               "quantity":1,
+               "unit":"PCS",
+               "price":1950.0,
+               "itemTotal":2000.0,
+               "fulfillmentType":"Delivery"
+            },
+            {  
+               "id":2,
+               "offerId":2345567,
+               "productId":2,
+               "quantity":1,
+               "unit":"PCS",
+               "price":1950.0,
+               "itemTotal":2000.0,
+               "fulfillmentType":"Delivery"
+            }
+         ]
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":3,
+   "last":true,
+   "size":20,
+   "number":0,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   },
+   "numberOfElements":3
+}
+
+3. Create a new Addess
+
+POST http://localhost:8080/solcommerce/pdp-service/account/1/cart
+
+Body
+{
+  "cartTotal": 4000,
+  "cartDate": "2018-08-15",
+  "user": {
+    "id": 1,
+    "userName": "bdatta",
+    "firstName": "Binit",
+    "lastName": "Datta",
+    "sex": "M",
+    "memberType": "G",
+    "rgistrationDate": "2015-01-01"
+  }
+}
+
+Results
+
+{  
+   "id":3,
+   "cartTotal":4000.0,
+   "cartDate":"2018-08-15T00:00:00.000+0000",
+   "user":{  
+      "id":1,
+      "userName":"bdatta",
+      "firstName":"Binit",
+      "lastName":"Datta",
+      "sex":"M",
+      "memberType":"G",
+      "rgistrationDate":"2015-01-01T00:00:00.000+0000"
+   }
+}
+
+4. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/account/1/cart/3
+
+Body
+
+{
+  "id":3,
+  "cartTotal": 3500,
+  "cartDate": "2018-08-15",
+  "user": {
+    "id": 1,
+    "userName": "bdatta",
+    "firstName": "Binit",
+    "lastName": "Datta",
+    "sex": "M",
+    "memberType": "G",
+    "rgistrationDate": "2015-01-01"
+  }
+}
+
+Results
+
+{  
+   "id":3,
+   "cartTotal":3500.0,
+   "cartDate":"2018-08-15T00:00:00.000+0000",
+   "user":{  
+      "id":1,
+      "userName":"bdatta",
+      "firstName":"Binit",
+      "lastName":"Datta",
+      "sex":"M",
+      "memberType":"G",
+      "rgistrationDate":"2015-01-01"
+   }
+}
+
+4. Get All Accounts
+
+GET http://localhost:8080/solcommerce/pdp-service/cart/1/cart/bypage
+
+{  
+   "content":[  
+      {  
+         "id":4,
+         "cartTotal":3500.0,
+         "cartDate":"2018-08-14",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         }
+      },
+      {  
+         "id":2,
+         "cartTotal":100.0,
+         "cartDate":"2018-08-15",
+         "user":{  
+            "id":1,
+            "userName":"bdatta",
+            "firstName":"Binit",
+            "lastName":"Datta",
+            "sex":"M",
+            "memberType":"G",
+            "rgistrationDate":"2015-01-01"
+         }
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "last":true,
+   "totalPages":1,
+   "totalElements":2,
+   "size":20,
+   "number":0,
+   "first":true,
+   "numberOfElements":2,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+4. Delete an Address
+
+DELETE http://localhost:8080/solcommerce/pdp-service/account/1/cart/3
+
+5. Confirm with GET
+
+GET http://localhost:8080/solcommerce/pdp-service/account/1/address/bypage
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "houseNumber":"5678",
+         "streetAddress":"234 Main Street",
+         "city":"Bloomington",
+         "state":"MN",
+         "zipCode":"50438",
+         "accountId":1,
+         "accountName":"Binit Datta"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":1,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":1,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
