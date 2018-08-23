@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +21,6 @@ import com.rollingstone.domain.StorePickup;
 import com.rollingstone.service.StorePickupService;
 
 @RestController
-@RequestMapping(value="solcommerce/pdp-service/spu/")
 public class StorePickupController {
 	
 	Logger logger  = LoggerFactory.getLogger("StorePickupController");
@@ -31,7 +31,7 @@ public class StorePickupController {
 		this.storePickupService = storePickupService;
 	}
 	
-	@PostMapping
+	@PostMapping("solcommerce/pdp-service/spu/")
 	@ResponseBody
 	public StorePickup createStorePickup(@RequestBody StorePickup storePickup) {
 		StorePickup storePickupSaved  = storePickupService.save(storePickup);
@@ -40,7 +40,7 @@ public class StorePickupController {
 		return storePickup;
 	}
 	
-	@GetMapping
+	@GetMapping("solcommerce/pdp-service/spu/{id}")
 	public StorePickup get(@PathVariable("id") Long id) {
 		
 		Optional<StorePickup> storePickupRetreived  = storePickupService.getStorePickup(id);
@@ -48,16 +48,26 @@ public class StorePickupController {
 		return storePickup;
 	}
 	
+	@GetMapping("solcommerce/pdp-service/spu/bypage")
 	Page<StorePickup> getStorePickupsByPage(
 			@RequestParam(value="pagenumber", required = true, defaultValue="0") Integer pageNumber,
 			@RequestParam(value="pagesize", required = true, defaultValue="20") Integer pageSize)
 	{
 		return storePickupService.getStorePickupByPage(pageNumber, pageSize);
 	}
+	
+	@PutMapping("solcommerce/pdp-service/spu/{id}")
+	@ResponseBody
+	public StorePickup updateStorePickup(@RequestBody StorePickup storePickup) {
+		StorePickup storePickupSaved  = storePickupService.save(storePickup);
 		
+		logger.info("StorePickup Updated :"+ storePickupSaved.toString());
+		return storePickup;
+	}
+	
 	
 	 /*---Delete a StorePickup by id---*/
-	   @DeleteMapping("/storePickup/{id}")
+	   @DeleteMapping("solcommerce/pdp-service/spu/{id}")
 	   public ResponseEntity<?> delete(@PathVariable("id") long id) {
 		   storePickupService.deleteStorePickup(id);
 	      return ResponseEntity.ok().body("StorePickup has been deleted successfully.");

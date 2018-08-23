@@ -1,0 +1,362 @@
+How to test the Promo REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET http://localhost:8080/solcommerce/pdp-service/spu/{id}
+
+http://localhost:8080/solcommerce/pdp-service/spu/1
+
+{  
+   "id":1,
+   "offerId":2345678,
+   "productId":1,
+   "highestStoreIndex":23,
+   "radius":"50",
+   "storeName":"Naperville",
+   "days":3,
+   "promoseDate":"2018-08-26T05:00:00.000+0000",
+   "inStockStatus":true,
+   "quantity":1,
+   "availableQuantity":250,
+   "storeNumber":"ST_23456",
+   "streetAddress":"2389 Main Street",
+   "city":"Naperville",
+   "state":"IL",
+   "zipCode":"60563",
+   "phone":"999-987-4567",
+   "sundayWorkingHours":"9AM-8 PM",
+   "mondayWorkingHours":"9AM-8 PM",
+   "tuesdayWorkingHours":"9AM-8 PM",
+   "wednesdayWorkingHours":"9AM-8 PM",
+   "thursdayWorkingHours":"9AM-8 PM",
+   "fridayWorkingHours":"9AM-8 PM",
+   "saturdayWorkingHours":"9AM-8 PM",
+   "autostore":false,
+   "nearest":true
+}
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+3. Get All Products
+
+http://localhost:8080/solcommerce/pdp-service/spu/bypage
+
+{  
+   "content":[  
+      {  
+         "id":2,
+         "offerId":2345679,
+         "productId":2,
+         "highestStoreIndex":23,
+         "radius":"50",
+         "storeName":"Bollingbrook",
+         "days":3,
+         "promoseDate":"2018-08-26T05:00:00.000+0000",
+         "inStockStatus":true,
+         "quantity":1,
+         "availableQuantity":250,
+         "storeNumber":"ST_23457",
+         "streetAddress":"2389 Main Street",
+         "city":"Naperville",
+         "state":"IL",
+         "zipCode":"60540",
+         "phone":"999-987-4567",
+         "sundayWorkingHours":"9AM-8 PM",
+         "mondayWorkingHours":"9AM-8 PM",
+         "tuesdayWorkingHours":"9AM-8 PM",
+         "wednesdayWorkingHours":"9AM-8 PM",
+         "thursdayWorkingHours":"9AM-8 PM",
+         "fridayWorkingHours":"9AM-8 PM",
+         "saturdayWorkingHours":"9AM-8 PM",
+         "autostore":false,
+         "nearest":true
+      },
+      {  
+         "id":1,
+         "offerId":2345678,
+         "productId":1,
+         "highestStoreIndex":23,
+         "radius":"50",
+         "storeName":"Naperville",
+         "days":3,
+         "promoseDate":"2018-08-26T05:00:00.000+0000",
+         "inStockStatus":true,
+         "quantity":1,
+         "availableQuantity":250,
+         "storeNumber":"ST_23456",
+         "streetAddress":"2389 Main Street",
+         "city":"Naperville",
+         "state":"IL",
+         "zipCode":"60563",
+         "phone":"999-987-4567",
+         "sundayWorkingHours":"9AM-8 PM",
+         "mondayWorkingHours":"9AM-8 PM",
+         "tuesdayWorkingHours":"9AM-8 PM",
+         "wednesdayWorkingHours":"9AM-8 PM",
+         "thursdayWorkingHours":"9AM-8 PM",
+         "fridayWorkingHours":"9AM-8 PM",
+         "saturdayWorkingHours":"9AM-8 PM",
+         "autostore":false,
+         "nearest":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":2,
+   "last":true,
+   "size":20,
+   "number":0,
+   "first":true,
+   "numberOfElements":2,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+4. Create a new Promo
+
+POST http://localhost:8080/solcommerce/pdp-service/spu/
+
+Body
+
+{  
+   "offerId":2345679,
+   "productId":2,
+   "highestStoreIndex":23,
+   "radius":"50",
+   "storeName":"Bollingbrook",
+   "days":3,
+   "promoseDate":"2018-08-26T05:00:00.000+0000",
+   "inStockStatus":true,
+   "quantity":1,
+   "availableQuantity":250,
+   "storeNumber":"ST_23457",
+   "streetAddress":"2389 Main Street",
+   "city":"Naperville",
+   "state":"IL",
+   "zipCode":"60540",
+   "phone":"999-987-4567",
+   "sundayWorkingHours":"9AM-8 PM",
+   "mondayWorkingHours":"9AM-8 PM",
+   "tuesdayWorkingHours":"9AM-8 PM",
+   "wednesdayWorkingHours":"9AM-8 PM",
+   "thursdayWorkingHours":"9AM-8 PM",
+   "fridayWorkingHours":"9AM-8 PM",
+   "saturdayWorkingHours":"9AM-8 PM",
+   "autostore":false,
+   "nearest":true
+}
+
+Results
+
+{  
+   "id":2,
+   "offerId":2345679,
+   "productId":2,
+   "highestStoreIndex":23,
+   "radius":"50",
+   "storeName":"Bollingbrook",
+   "days":3,
+   "promoseDate":"2018-08-26T05:00:00.000+0000",
+   "inStockStatus":true,
+   "quantity":1,
+   "availableQuantity":250,
+   "storeNumber":"ST_23457",
+   "streetAddress":"2389 Main Street",
+   "city":"Naperville",
+   "state":"IL",
+   "zipCode":"60540",
+   "phone":"999-987-4567",
+   "sundayWorkingHours":"9AM-8 PM",
+   "mondayWorkingHours":"9AM-8 PM",
+   "tuesdayWorkingHours":"9AM-8 PM",
+   "wednesdayWorkingHours":"9AM-8 PM",
+   "thursdayWorkingHours":"9AM-8 PM",
+   "fridayWorkingHours":"9AM-8 PM",
+   "saturdayWorkingHours":"9AM-8 PM",
+   "autostore":false,
+   "nearest":true
+}
+
+
+
+5. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/spu/{id}
+
+
+http://localhost:8080/solcommerce/pdp-service/spu/2
+
+
+Body
+
+{
+  "id": 2,
+  "offerId": 2345679,
+  "productId": 2,
+  "highestStoreIndex": 23,
+  "radius": "50",
+  "storeName": "Bollingbrook",
+  "days": 3,
+  "promoseDate": "2018-08-26T05:00:00.000+0000",
+  "inStockStatus": true,
+  "quantity": 1,
+  "availableQuantity": 250,
+  "storeNumber": "ST_23457",
+  "streetAddress": "2389 Main Street",
+  "city": "Naperville",
+  "state": "IL",
+  "zipCode": "60540",
+  "phone": "999-987-4567",
+  "sundayWorkingHours": "6AM-8 PM",
+  "mondayWorkingHours": "9AM-8 PM",
+  "tuesdayWorkingHours": "9AM-8 PM",
+  "wednesdayWorkingHours": "9AM-8 PM",
+  "thursdayWorkingHours": "9AM-8 PM",
+  "fridayWorkingHours": "9AM-8 PM",
+  "saturdayWorkingHours": "9AM-8 PM",
+  "autostore": false,
+  "nearest": true
+}
+
+
+Results
+
+{  
+   "id":2,
+   "offerId":2345679,
+   "productId":2,
+   "highestStoreIndex":23,
+   "radius":"50",
+   "storeName":"Bollingbrook",
+   "days":3,
+   "promoseDate":"2018-08-26T05:00:00.000+0000",
+   "inStockStatus":true,
+   "quantity":1,
+   "availableQuantity":250,
+   "storeNumber":"ST_23457",
+   "streetAddress":"2389 Main Street",
+   "city":"Naperville",
+   "state":"IL",
+   "zipCode":"60540",
+   "phone":"999-987-4567",
+   "sundayWorkingHours":"6AM-8 PM",
+   "mondayWorkingHours":"9AM-8 PM",
+   "tuesdayWorkingHours":"9AM-8 PM",
+   "wednesdayWorkingHours":"9AM-8 PM",
+   "thursdayWorkingHours":"9AM-8 PM",
+   "fridayWorkingHours":"9AM-8 PM",
+   "saturdayWorkingHours":"9AM-8 PM",
+   "autostore":false,
+   "nearest":true
+}
+
+Get All Again
+
+http://localhost:8080/solcommerce/pdp-service/spu/bypage
+
+{  
+   "content":[  
+      {  
+         "id":2,
+         "offerId":2345679,
+         "productId":2,
+         "highestStoreIndex":23,
+         "radius":"50",
+         "storeName":"Bollingbrook",
+         "days":3,
+         "promoseDate":"2018-08-26T05:00:00.000+0000",
+         "inStockStatus":true,
+         "quantity":1,
+         "availableQuantity":250,
+         "storeNumber":"ST_23457",
+         "streetAddress":"2389 Main Street",
+         "city":"Naperville",
+         "state":"IL",
+         "zipCode":"60540",
+         "phone":"999-987-4567",
+         "sundayWorkingHours":"6AM-8 PM",
+         "mondayWorkingHours":"9AM-8 PM",
+         "tuesdayWorkingHours":"9AM-8 PM",
+         "wednesdayWorkingHours":"9AM-8 PM",
+         "thursdayWorkingHours":"9AM-8 PM",
+         "fridayWorkingHours":"9AM-8 PM",
+         "saturdayWorkingHours":"9AM-8 PM",
+         "autostore":false,
+         "nearest":true
+      },
+      {  
+         "id":1,
+         "offerId":2345678,
+         "productId":1,
+         "highestStoreIndex":23,
+         "radius":"50",
+         "storeName":"Naperville",
+         "days":3,
+         "promoseDate":"2018-08-26T05:00:00.000+0000",
+         "inStockStatus":true,
+         "quantity":1,
+         "availableQuantity":250,
+         "storeNumber":"ST_23456",
+         "streetAddress":"2389 Main Street",
+         "city":"Naperville",
+         "state":"IL",
+         "zipCode":"60563",
+         "phone":"999-987-4567",
+         "sundayWorkingHours":"9AM-8 PM",
+         "mondayWorkingHours":"9AM-8 PM",
+         "tuesdayWorkingHours":"9AM-8 PM",
+         "wednesdayWorkingHours":"9AM-8 PM",
+         "thursdayWorkingHours":"9AM-8 PM",
+         "fridayWorkingHours":"9AM-8 PM",
+         "saturdayWorkingHours":"9AM-8 PM",
+         "autostore":false,
+         "nearest":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":2,
+   "last":true,
+   "size":20,
+   "number":0,
+   "first":true,
+   "numberOfElements":2,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+
+
+7. Delete an Promo
+
+DELETE http://localhost:8080/solcommerce/pdp-service/spu/2
+
+
+
+
+
+

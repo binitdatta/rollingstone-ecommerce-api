@@ -21,10 +21,7 @@ public class PricingService {
 		this.pricingRepository = pricingRepository;
 	}
 	
-	public PricingService() {
-		super();
-		
-	}
+	
 	
 	public Pricing save(Pricing pricing) {
 		Pricing pricingSaved = pricingRepository.save(pricing);
@@ -34,7 +31,7 @@ public class PricingService {
 	
 	public Page<Pricing> getPricingByPage(Integer pageNumber, Integer pageSize){
 		
-		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("houseNumber").descending());
+		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("productCode").descending());
 		
 		
 		return pricingRepository.findAll(pageable);		

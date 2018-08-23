@@ -8,8 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,12 +21,14 @@ public class ShippingLineItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
-	@JoinColumn(name="PRODUCT_ID")
+	@Transient
 	private Product product;
 	
+	@Column(name = "PRODUCT_ID", nullable = false)
+	private Long productId;
+	
 	@Column(name="quantity_shipped", nullable=false)
-	String quantity;
+	int quantity;
 	
 	@Column(name="unit_price", nullable=false)
 	Double unitPrice;
@@ -36,7 +38,6 @@ public class ShippingLineItem {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "SHIPPING_ID", nullable = false)
-	@JsonIgnore
 	Shipping shippment;
 
 	public Long getId() {
@@ -55,11 +56,11 @@ public class ShippingLineItem {
 		this.product = product;
 	}
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
@@ -87,7 +88,16 @@ public class ShippingLineItem {
 		this.shippment = shippment;
 	}
 
-	public ShippingLineItem(Long id, Product product, String quantity, Double unitPrice, String unitOfMeasurement,
+	
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public ShippingLineItem(Long id, Product product, int quantity, Double unitPrice, String unitOfMeasurement,
 			Shipping shippment) {
 		super();
 		this.id = id;
@@ -113,11 +123,8 @@ public class ShippingLineItem {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((product == null) ? 0 : product.hashCode());
-		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
-		result = prime * result + ((shippment == null) ? 0 : shippment.hashCode());
+		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
 		result = prime * result + ((unitOfMeasurement == null) ? 0 : unitOfMeasurement.hashCode());
-		result = prime * result + ((unitPrice == null) ? 0 : unitPrice.hashCode());
 		return result;
 	}
 
@@ -135,33 +142,22 @@ public class ShippingLineItem {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (product == null) {
-			if (other.product != null)
+		if (productId == null) {
+			if (other.productId != null)
 				return false;
-		} else if (!product.equals(other.product))
-			return false;
-		if (quantity == null) {
-			if (other.quantity != null)
-				return false;
-		} else if (!quantity.equals(other.quantity))
-			return false;
-		if (shippment == null) {
-			if (other.shippment != null)
-				return false;
-		} else if (!shippment.equals(other.shippment))
+		} else if (!productId.equals(other.productId))
 			return false;
 		if (unitOfMeasurement == null) {
 			if (other.unitOfMeasurement != null)
 				return false;
 		} else if (!unitOfMeasurement.equals(other.unitOfMeasurement))
 			return false;
-		if (unitPrice == null) {
-			if (other.unitPrice != null)
-				return false;
-		} else if (!unitPrice.equals(other.unitPrice))
-			return false;
 		return true;
 	}
+
+	
+
+
 	
 	
 }

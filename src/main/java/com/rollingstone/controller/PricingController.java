@@ -22,8 +22,7 @@ import com.rollingstone.domain.Pricing;
 import com.rollingstone.service.PricingService;
 
 @RestController
-@RequestMapping(value="solcommerce/pdp-service/pricing/")
-public class PricingController {
+ public class PricingController {
 
 	Logger logger  = LoggerFactory.getLogger("PricingController");
 	

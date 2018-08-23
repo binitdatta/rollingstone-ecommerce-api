@@ -209,3 +209,167 @@ VALUES
 234567,
 2);
 
+INSERT INTO `rsecommerce`.`rollingstone_pricing`
+(
+`currencycode`,
+`disc_price`,  
+`label`,
+`display`,
+`membertype`,
+`orig_price`,
+`pricetype`,
+`price_id`,
+`pcode`,
+`status`)
+VALUES
+(
+'US$',
+2000.00,
+2750.00,
+'Labor Day Bonanza Price',
+'G',
+2750.00,
+'discounted',
+'P2345678',
+'P2345872',
+'a');
+
+
+INSERT INTO `rsecommerce`.`rollingstone_promo`
+(
+`disctype`,
+`discamt`,
+`enddate`,
+`minpurchaseval`,
+`name`,
+`pcode`,
+`promoid`,
+`promo_details`,
+`startdate`,
+`status`,
+`title`)
+VALUES
+(
+'promo',
+250.00,
+'2018-10-20',
+1,
+'labor day promotions',
+'P2345872',
+'PROMO_P2345872',
+'Labor Day Sales Promotions ',
+'2018-09-03',
+'a',
+'Labor Day Sales Promotion for P2345872');
+
+INSERT INTO `rsecommerce`.`rollingstone_store_pickup`
+(
+`availablequantity`,
+`city`,
+`days`,
+`friwh`,
+`higheststoreindex`,
+`instockstatus`,
+`isautostore`,
+`nearest`,
+`monwh`,
+`offerid`,
+`phone`,
+`product_id`,
+`promisedate`,
+`quantity`,
+`radius`,
+`satwh`,
+`state`,
+`storename`,
+`storenumber`,
+`streetaddress`,
+`sunwh`,
+`thurwh`,
+`tuewh`,
+`wedwh`,
+`zipcode`)
+VALUES
+(
+250,
+'Naperville',
+3,
+'9AM-8 PM',
+23,
+1,
+0,
+1,
+'9AM-8 PM',
+2345678,
+'999-987-4567',
+1,
+'2018-08-26',
+1,
+50,
+'9AM-8 PM',
+'IL',
+'Naperville',
+'ST_23456',
+'2389 Main Street',
+'9AM-8 PM',
+'9AM-8 PM',
+'9AM-8 PM',
+'9AM-8 PM',
+'60563');
+
+INSERT INTO `rsecommerce`.`rollingstone_shipping_hdr`
+(
+`arrival_date`,
+`days_in_transit`,
+`is_available`,
+`is_free`,
+`is_free_shipping_for_members`,
+`offer_id`,
+`product_id`,
+`ship_carrier`,
+`shipping_charge`,
+`shipping_mode`,
+`order_id`)
+VALUES
+(
+'2018-08-31',
+12,
+1,
+0,
+1,
+345678,
+1,
+'UPS',
+39.00,
+'GROUND',
+1);
+
+INSERT INTO `rsecommerce`.`rollingstone_shipping_items`
+(
+`quantity_shipped`,
+`uom`,
+`unit_price`,
+`product_id`,
+`shipping_id`)
+VALUES
+(
+1,
+'PCS',
+2350.00,
+1,
+1);
+
+INSERT INTO `rsecommerce`.`rollingstone_shipping_items`
+(
+`quantity_shipped`,
+`uom`,
+`unit_price`,
+`product_id`,
+`shipping_id`)
+VALUES
+(
+1,
+'PCS',
+2350.00,
+2,
+1);

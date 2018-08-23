@@ -1,0 +1,431 @@
+How to test the Promo REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET http://localhost:8080/solcommerce/pdp-service/account/1/order/1/shipping/1
+
+solcommerce/pdp-service/account/{accountId}/order/{orderId}/shipping
+
+http://localhost:8080/solcommerce/pdp-service/spu/1
+
+{  
+   "id":6,
+   "offerId":345680,
+   "availableDate":"2018-08-28T00:00:00.000+0000",
+   "daysInTransit":12,
+   "shippingCharge":49.0,
+   "shippingMode":"GROUND",
+   "shipCarrier":"FEDEX",
+   "orderNumber":"2345678",
+   "orderDate":"2018-08-24",
+   "shippingItems":[  
+      {  
+         "id":3,
+         "productCode":"P2345873",
+         "productName":"Samsung 60 inch TV",
+         "productId":null,
+         "quantity":"1",
+         "unitPrice":2350.0,
+         "unitOfMeasurement":"PCS"
+      },
+      {  
+         "id":4,
+         "productCode":"P2345872",
+         "productName":"Samsung 70 inch TV",
+         "productId":null,
+         "quantity":"1",
+         "unitPrice":2350.0,
+         "unitOfMeasurement":"PCS"
+      }
+   ],
+   "available":true,
+   "free":false,
+   "freeShippingForMembers":true
+}
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+3. Get All Products
+
+http://localhost:8080/solcommerce/pdp-service/spu/bypage
+
+{  
+   "content":[  
+      {  
+         "id":2,
+         "offerId":2345679,
+         "productId":2,
+         "highestStoreIndex":23,
+         "radius":"50",
+         "storeName":"Bollingbrook",
+         "days":3,
+         "promoseDate":"2018-08-26T05:00:00.000+0000",
+         "inStockStatus":true,
+         "quantity":1,
+         "availableQuantity":250,
+         "storeNumber":"ST_23457",
+         "streetAddress":"2389 Main Street",
+         "city":"Naperville",
+         "state":"IL",
+         "zipCode":"60540",
+         "phone":"999-987-4567",
+         "sundayWorkingHours":"9AM-8 PM",
+         "mondayWorkingHours":"9AM-8 PM",
+         "tuesdayWorkingHours":"9AM-8 PM",
+         "wednesdayWorkingHours":"9AM-8 PM",
+         "thursdayWorkingHours":"9AM-8 PM",
+         "fridayWorkingHours":"9AM-8 PM",
+         "saturdayWorkingHours":"9AM-8 PM",
+         "autostore":false,
+         "nearest":true
+      },
+      {  
+         "id":1,
+         "offerId":2345678,
+         "productId":1,
+         "highestStoreIndex":23,
+         "radius":"50",
+         "storeName":"Naperville",
+         "days":3,
+         "promoseDate":"2018-08-26T05:00:00.000+0000",
+         "inStockStatus":true,
+         "quantity":1,
+         "availableQuantity":250,
+         "storeNumber":"ST_23456",
+         "streetAddress":"2389 Main Street",
+         "city":"Naperville",
+         "state":"IL",
+         "zipCode":"60563",
+         "phone":"999-987-4567",
+         "sundayWorkingHours":"9AM-8 PM",
+         "mondayWorkingHours":"9AM-8 PM",
+         "tuesdayWorkingHours":"9AM-8 PM",
+         "wednesdayWorkingHours":"9AM-8 PM",
+         "thursdayWorkingHours":"9AM-8 PM",
+         "fridayWorkingHours":"9AM-8 PM",
+         "saturdayWorkingHours":"9AM-8 PM",
+         "autostore":false,
+         "nearest":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":2,
+   "last":true,
+   "size":20,
+   "number":0,
+   "first":true,
+   "numberOfElements":2,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+4. Create a new Shipping
+
+POST http://localhost:8080/solcommerce/pdp-service/account/1/order/1/shipping
+
+Body
+
+{
+  "offerId": 345679,
+  "availableDate": "2018-08-30",
+  "daysInTransit": 12,
+  "shippingCharge": 49,
+  "shippingMode": "GROUND",
+  "shipCarrier": "FEDEX",
+  "order": {
+    "id": 1
+  },
+  "shippingItems": [
+    {
+      "product": {
+        "id": 1,
+        "productCode": "P2345872",
+        "productName": "Samsung 70 inch TV",
+        "shortDescription": "",
+        "longDescription": "70 inch Samsung Television with Retina Display",
+        "canDisplay": true,
+        "parentCategory": {
+          "id": 1,
+          "categoryName": "Televison",
+          "categoryDescription": "Large Televison"
+        },
+        "category": {
+          "id": 2,
+          "categoryName": "Electrinics",
+          "categoryDescription": "Electrinics"
+        },
+        "deleted": false,
+        "automotive": false,
+        "international": true
+      },
+      "productId": 1,
+      "quantity": "1",
+      "unitPrice": 2350,
+      "unitOfMeasurement": "PCS"
+    },
+    {
+      "product": {
+        "id": 2,
+        "productCode": "P2345873",
+        "productName": "Samsung 60 inch TV",
+        "shortDescription": "",
+        "longDescription": "60 inch Samsung Television with Retina Display",
+        "canDisplay": true,
+        "parentCategory": {
+          "id": 1,
+          "categoryName": "Televison",
+          "categoryDescription": "Large Televison"
+        },
+        "category": {
+          "id": 2,
+          "categoryName": "Electrinics",
+          "categoryDescription": "Electrinics"
+        },
+        "deleted": false,
+        "automotive": false,
+        "international": true
+      },
+      "productId": 2,
+      "quantity": "1",
+      "unitPrice": 2350,
+      "unitOfMeasurement": "PCS"
+    }
+  ],
+  "free": false,
+  "freeShippingForMembers": true,
+  "available": true
+}
+
+Results
+
+{  
+   "id":2,
+   "offerId":2345679,
+   "productId":2,
+   "highestStoreIndex":23,
+   "radius":"50",
+   "storeName":"Bollingbrook",
+   "days":3,
+   "promoseDate":"2018-08-26T05:00:00.000+0000",
+   "inStockStatus":true,
+   "quantity":1,
+   "availableQuantity":250,
+   "storeNumber":"ST_23457",
+   "streetAddress":"2389 Main Street",
+   "city":"Naperville",
+   "state":"IL",
+   "zipCode":"60540",
+   "phone":"999-987-4567",
+   "sundayWorkingHours":"9AM-8 PM",
+   "mondayWorkingHours":"9AM-8 PM",
+   "tuesdayWorkingHours":"9AM-8 PM",
+   "wednesdayWorkingHours":"9AM-8 PM",
+   "thursdayWorkingHours":"9AM-8 PM",
+   "fridayWorkingHours":"9AM-8 PM",
+   "saturdayWorkingHours":"9AM-8 PM",
+   "autostore":false,
+   "nearest":true
+}
+
+
+
+5. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/spu/{id}
+
+
+http://localhost:8080/solcommerce/pdp-service/account/{accountId}/order/{orderId}/shipping/6
+
+
+Body
+
+{
+  "id": 6,
+  "offerId": 345679,
+  "availableDate": "2018-08-30",
+  "daysInTransit": 12,
+  "shippingCharge": 49,
+  "shippingMode": "GROUND",
+  "shipCarrier": "FEDEX",
+  "free": false,
+  "freeShippingForMembers": true,
+  "available": true,
+  "order": {
+    "id": 1
+  },
+  "shippingItems": [
+    {
+      "id": 3,
+      "product": {
+        "id": 1,
+        "productCode": "P2345872",
+        "productName": "Samsung 70 inch TV",
+        "shortDescription": "",
+        "longDescription": "70 inch Samsung Television with Retina Display",
+        "canDisplay": true,
+        "parentCategory": {
+          "id": 1,
+          "categoryName": "Televison",
+          "categoryDescription": "Large Televison"
+        },
+        "category": {
+          "id": 2,
+          "categoryName": "Electrinics",
+          "categoryDescription": "Electrinics"
+        },
+        "deleted": false,
+        "automotive": false,
+        "international": true
+      },
+      "productId": 1,
+      "quantity": "1",
+      "unitPrice": 2350,
+      "unitOfMeasurement": "PCS"
+    },
+    {
+      "id": 4,
+      "product": {
+        "id": 2,
+        "productCode": "P2345873",
+        "productName": "Samsung 60 inch TV",
+        "shortDescription": "",
+        "longDescription": "60 inch Samsung Television with Retina Display",
+        "canDisplay": true,
+        "parentCategory": {
+          "id": 1,
+          "categoryName": "Televison",
+          "categoryDescription": "Large Televison"
+        },
+        "category": {
+          "id": 2,
+          "categoryName": "Electrinics",
+          "categoryDescription": "Electrinics"
+        },
+        "deleted": false,
+        "automotive": false,
+        "international": true
+      },
+      "productId": 2,
+      "quantity": "1",
+      "unitPrice": 2350,
+      "unitOfMeasurement": "PCS"
+    }
+  ]
+}
+
+
+
+Results
+
+
+Get All Again
+
+http://localhost:8080/solcommerce/pdp-service/spu/bypage
+
+{  
+   "content":[  
+      {  
+         "id":2,
+         "offerId":2345679,
+         "productId":2,
+         "highestStoreIndex":23,
+         "radius":"50",
+         "storeName":"Bollingbrook",
+         "days":3,
+         "promoseDate":"2018-08-26T05:00:00.000+0000",
+         "inStockStatus":true,
+         "quantity":1,
+         "availableQuantity":250,
+         "storeNumber":"ST_23457",
+         "streetAddress":"2389 Main Street",
+         "city":"Naperville",
+         "state":"IL",
+         "zipCode":"60540",
+         "phone":"999-987-4567",
+         "sundayWorkingHours":"6AM-8 PM",
+         "mondayWorkingHours":"9AM-8 PM",
+         "tuesdayWorkingHours":"9AM-8 PM",
+         "wednesdayWorkingHours":"9AM-8 PM",
+         "thursdayWorkingHours":"9AM-8 PM",
+         "fridayWorkingHours":"9AM-8 PM",
+         "saturdayWorkingHours":"9AM-8 PM",
+         "autostore":false,
+         "nearest":true
+      },
+      {  
+         "id":1,
+         "offerId":2345678,
+         "productId":1,
+         "highestStoreIndex":23,
+         "radius":"50",
+         "storeName":"Naperville",
+         "days":3,
+         "promoseDate":"2018-08-26T05:00:00.000+0000",
+         "inStockStatus":true,
+         "quantity":1,
+         "availableQuantity":250,
+         "storeNumber":"ST_23456",
+         "streetAddress":"2389 Main Street",
+         "city":"Naperville",
+         "state":"IL",
+         "zipCode":"60563",
+         "phone":"999-987-4567",
+         "sundayWorkingHours":"9AM-8 PM",
+         "mondayWorkingHours":"9AM-8 PM",
+         "tuesdayWorkingHours":"9AM-8 PM",
+         "wednesdayWorkingHours":"9AM-8 PM",
+         "thursdayWorkingHours":"9AM-8 PM",
+         "fridayWorkingHours":"9AM-8 PM",
+         "saturdayWorkingHours":"9AM-8 PM",
+         "autostore":false,
+         "nearest":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":2,
+   "last":true,
+   "size":20,
+   "number":0,
+   "first":true,
+   "numberOfElements":2,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+
+
+7. Delete an Promo
+
+DELETE http://localhost:8080/solcommerce/pdp-service/account/1/order/1/shipping/6
+
+
+
+
+
+

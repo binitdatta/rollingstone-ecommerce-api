@@ -1,0 +1,250 @@
+How to test the Product REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET hhttp://localhost:8080/solcommerce/pdp-service/product/{id}
+
+http://localhost:8080/solcommerce/pdp-service/product/1
+
+{  
+   "id":1,
+   "productCode":"P2345872",
+   "productName":"Samsung 70 inch TV",
+   "shortDescription":"",
+   "longDescription":"70 inch Samsung Television with Retina Display",
+   "canDisplay":true,
+   "parentCategory":{  
+      "id":1,
+      "categoryName":"Televison",
+      "categoryDescription":"Large Televison"
+   },
+   "category":{  
+      "id":2,
+      "categoryName":"Electrinics",
+      "categoryDescription":"Electrinics"
+   },
+   "deleted":false,
+   "automotive":false,
+   "international":true
+}
+
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+3. Get All Products
+
+http://localhost:8080/solcommerce/pdp-service/product/bypage
+http://localhost:8080/solcommerce/pdp-service/product/bypage
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "productCode":"P2345872",
+         "productName":"Samsung 70 inch TV",
+         "shortDescription":"",
+         "longDescription":"70 inch Samsung Television with Retina Display",
+         "canDisplay":true,
+         "parentCategory":{  
+            "id":1,
+            "categoryName":"Televison",
+            "categoryDescription":"Large Televison"
+         },
+         "category":{  
+            "id":2,
+            "categoryName":"Electrinics",
+            "categoryDescription":"Electrinics"
+         },
+         "deleted":false,
+         "automotive":false,
+         "international":true
+      },
+      {  
+         "id":2,
+         "productCode":"P2345873",
+         "productName":"Samsung 60 inch TV",
+         "shortDescription":"",
+         "longDescription":"60 inch Samsung Television with Retina Display",
+         "canDisplay":true,
+         "parentCategory":{  
+            "id":1,
+            "categoryName":"Televison",
+            "categoryDescription":"Large Televison"
+         },
+         "category":{  
+            "id":2,
+            "categoryName":"Electrinics",
+            "categoryDescription":"Electrinics"
+         },
+         "deleted":false,
+         "automotive":false,
+         "international":true
+      },
+      {  
+         "id":3,
+         "productCode":"P2345875",
+         "productName":"Samsung 55 inch TV",
+         "shortDescription":"",
+         "longDescription":"55 inch Samsung Television with Retina Display",
+         "canDisplay":true,
+         "parentCategory":{  
+            "id":1,
+            "categoryName":"Televison",
+            "categoryDescription":"Large Televison"
+         },
+         "category":{  
+            "id":2,
+            "categoryName":"Electrinics",
+            "categoryDescription":"Electrinics"
+         },
+         "deleted":false,
+         "automotive":false,
+         "international":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":3,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":3,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   },
+   "first":true
+}
+
+4. Create a new Order
+
+POST http://localhost:8080/solcommerce/pdp-service/product
+
+Body
+
+{  
+
+   "productCode":"P2345874",
+   "productName":"Samsung 40 inch TV",
+   "shortDescription":"",
+   "longDescription":"40 inch Samsung Television with Retina Display",
+   "canDisplay":true,
+   "parentCategory":{  
+      "id":1,
+      "categoryName":"Televison",
+      "categoryDescription":"Large Televison"
+   },
+   "category":{  
+      "id":2,
+      "categoryName":"Electrinics",
+      "categoryDescription":"Electrinics"
+   },
+   "deleted":false,
+   "automotive":false,
+   "international":true
+}
+
+Results
+
+{  
+   "id":4,
+   "productCode":"P2345874",
+   "productName":"Samsung 40 inch TV",
+   "shortDescription":"",
+   "longDescription":"40 inch Samsung Television with Retina Display",
+   "canDisplay":true,
+   "parentCategory":{  
+      "id":1,
+      "categoryName":"Televison",
+      "categoryDescription":"Large Televison"
+   },
+   "category":{  
+      "id":2,
+      "categoryName":"Electrinics",
+      "categoryDescription":"Electrinics"
+   },
+   "deleted":false,
+   "automotive":false,
+   "international":true
+}
+
+
+
+5. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/product/{id}
+
+
+http://localhost:8080/solcommerce/pdp-service/product/4
+
+
+Body
+
+{
+  "id": 4,
+  "productCode": "P2345874",
+  "productName": "Samsung 40 inch TV",
+  "shortDescription": "",
+  "longDescription": "40 inch Samsung Television without Retina Display",
+  "canDisplay": true,
+  "parentCategory": {
+    "id": 1,
+    "categoryName": "Televison",
+    "categoryDescription": "Large Televison"
+  },
+  "category": {
+    "id": 2,
+    "categoryName": "Electrinics",
+    "categoryDescription": "Electrinics"
+  },
+  "deleted": false,
+  "automotive": false,
+  "international": true
+}
+
+
+Results
+
+{  
+   "id":4,
+   "productCode":"P2345874",
+   "productName":"Samsung 40 inch TV",
+   "shortDescription":"",
+   "longDescription":"40 inch Samsung Television without Retina Display",
+   "canDisplay":true,
+   "parentCategory":{  
+      "id":1,
+      "categoryName":"Televison",
+      "categoryDescription":"Large Televison"
+   },
+   "category":{  
+      "id":2,
+      "categoryName":"Electrinics",
+      "categoryDescription":"Electrinics"
+   },
+   "deleted":false,
+   "automotive":false,
+   "international":true
+}
+
+
+
+7. Delete an Order
+
+DELETE http://localhost:8080/solcommerce/pdp-service/product/4
+
+
+
+
+
+

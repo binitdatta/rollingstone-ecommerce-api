@@ -170,7 +170,6 @@ CREATE TABLE `rollingstone_shipping_hdr` (
   `is_free` bit(1) NOT NULL,
   `is_free_shipping_for_members` bit(1) NOT NULL,
   `offer_id` bigint(20) NOT NULL,
-  `product_id` bigint(20) NOT NULL,
   `ship_carrier` varchar(255) NOT NULL,
   `shipping_charge` double NOT NULL,
   `shipping_mode` varchar(255) NOT NULL,
@@ -179,6 +178,8 @@ CREATE TABLE `rollingstone_shipping_hdr` (
   KEY `FK962s2yv66rkwcams3vow6ohkg` (`order_id`),
   CONSTRAINT `FK962s2yv66rkwcams3vow6ohkg` FOREIGN KEY (`order_id`) REFERENCES `rollingstone_order_hdr` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE rollingstone_shipping_hdr DROP COLUMN PRODUCT_ID;
 
 
 CREATE TABLE `rollingstone_shipping_items` (

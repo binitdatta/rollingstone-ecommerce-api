@@ -1,0 +1,179 @@
+How to test the Promo REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET http://localhost:8080/solcommerce/pdp-service/promo/{id}
+
+http://localhost:8080/solcommerce/pdp-service/promo/1
+
+{  
+   "id":1,
+   "productCode":"P2345872",
+   "promoCode":"PROMO_P2345872",
+   "name":"labor day promotions",
+   "title":"Labor Day Sales Promotion for P2345872",
+   "promoDetails":"Labor Day Sales Promotions ",
+   "discuountAmount":250.0,
+   "discountType":"promo",
+   "endDate":"2018-10-20",
+   "startDate":"2018-09-03",
+   "minimumPurchaseValue":"1",
+   "status":"a"
+}
+
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+3. Get All Products
+
+http://localhost:8080/solcommerce/pdp-service/promo/bypage
+
+{  
+   "content":[  
+      {  
+         "id":2,
+         "productCode":"P2345873",
+         "promoCode":"PROMO_P2345873",
+         "name":"labor day promotions",
+         "title":"Labor Day Sales Promotion for P2345872",
+         "promoDetails":"Labor Day Sales Promotions Updated",
+         "discuountAmount":250.0,
+         "discountType":"promo",
+         "endDate":"2018-10-19",
+         "startDate":"2018-09-02",
+         "minimumPurchaseValue":"1",
+         "status":"a"
+      },
+      {  
+         "id":1,
+         "productCode":"P2345872",
+         "promoCode":"PROMO_P2345872",
+         "name":"labor day promotions",
+         "title":"Labor Day Sales Promotion for P2345872",
+         "promoDetails":"Labor Day Sales Promotions ",
+         "discuountAmount":250.0,
+         "discountType":"promo",
+         "endDate":"2018-10-20",
+         "startDate":"2018-09-03",
+         "minimumPurchaseValue":"1",
+         "status":"a"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":2,
+   "last":true,
+   "size":20,
+   "number":0,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   },
+   "numberOfElements":2
+}
+
+4. Create a new Promo
+
+POST http://localhost:8080/solcommerce/pdp-service/promo/
+
+Body
+
+{  
+   
+   "productCode":"P2345873",
+   "promoCode":"PROMO_P2345873",
+   "name":"labor day promotions",
+   "title":"Labor Day Sales Promotion for P2345872",
+   "promoDetails":"Labor Day Sales Promotions ",
+   "discuountAmount":250.0,
+   "discountType":"promo",
+   "endDate":"2018-10-20",
+   "startDate":"2018-09-03",
+   "minimumPurchaseValue":"1",
+   "status":"a"
+}
+
+Results
+
+{  
+   "id":2,
+   "productCode":"P2345873",
+   "promoCode":"PROMO_P2345873",
+   "name":"labor day promotions",
+   "title":"Labor Day Sales Promotion for P2345872",
+   "promoDetails":"Labor Day Sales Promotions ",
+   "discuountAmount":250.0,
+   "discountType":"promo",
+   "endDate":"2018-10-20T00:00:00.000+0000",
+   "startDate":"2018-09-03T00:00:00.000+0000",
+   "minimumPurchaseValue":"1",
+   "status":"a"
+}
+
+
+
+5. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/promo/{id}
+
+
+http://localhost:8080/solcommerce/pdp-service/promo/2
+
+
+Body
+
+{  
+   "id":2,
+   "productCode":"P2345873",
+   "promoCode":"PROMO_P2345873",
+   "name":"labor day promotions",
+   "title":"Labor Day Sales Promotion for P2345872",
+   "promoDetails":"Labor Day Sales Promotions Updated",
+   "discuountAmount":250.0,
+   "discountType":"promo",
+   "endDate":"2018-10-20T00:00:00.000+0000",
+   "startDate":"2018-09-03T00:00:00.000+0000",
+   "minimumPurchaseValue":"1",
+   "status":"a"
+}
+
+
+Results
+
+{  
+   "id":2,
+   "productCode":"P2345873",
+   "promoCode":"PROMO_P2345873",
+   "name":"labor day promotions",
+   "title":"Labor Day Sales Promotion for P2345872",
+   "promoDetails":"Labor Day Sales Promotions Updated",
+   "discuountAmount":250.0,
+   "discountType":"promo",
+   "endDate":"2018-10-20T00:00:00.000+0000",
+   "startDate":"2018-09-03T00:00:00.000+0000",
+   "minimumPurchaseValue":"1",
+   "status":"a"
+}
+
+
+
+7. Delete an Promo
+
+DELETE http://localhost:8080/solcommerce/pdp-service/promo/2
+
+
+
+
+
+

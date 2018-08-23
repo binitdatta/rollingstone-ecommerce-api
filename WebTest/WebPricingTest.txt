@@ -1,0 +1,220 @@
+How to test the Pricing REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET hhttp://localhost:8080/solcommerce/pdp-service/pricing/{id}
+
+http://localhost:8080/solcommerce/pdp-service/pricing/1
+
+
+{  
+   "id":1,
+   "productCode":"P2345872",
+   "pricingId":"P2345678",
+   "memberType":"G",
+   "currencyCode":"US$",
+   "priceType":"discounted",
+   "discuountAmount":2750.0,
+   "display":"Labor Day Bonanza Price",
+   "originalPrice":2750.0,
+   "discountedPrice":2000.0,
+   "status":"a"
+}
+
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+3. Get All Order
+
+http://localhost:8080/hhttp://localhost:8080/solcommerce/pdp-service/pricing/bypage
+http://localhost:8080/hhttp://localhost:8080/solcommerce/pdp-service/pricing/bypage
+
+
+
+4. Create a new Order
+
+POST http://localhost:8080/hhttp://localhost:8080/solcommerce/pdp-service/pricing
+POST http://localhost:8080/hhttp://localhost:8080/solcommerce/pdp-service/pricing/
+
+Body
+
+{  
+  
+   "productCode":"P2345873",
+   "pricingId":"P2345873",
+   "memberType":"G",
+   "currencyCode":"US$",
+   "priceType":"discounted",
+   "discuountAmount":2750.0,
+   "display":"Labor Day Bonanza Price",
+   "originalPrice":2750.0,
+   "discountedPrice":2000.0,
+   "status":"a"
+}
+
+Results
+
+{  
+   "id":2,
+   "productCode":"P2345873",
+   "pricingId":"P2345873",
+   "memberType":"G",
+   "currencyCode":"US$",
+   "priceType":"discounted",
+   "discuountAmount":2750.0,
+   "display":"Labor Day Bonanza Price",
+   "originalPrice":2750.0,
+   "discountedPrice":2000.0,
+   "status":"a"
+}
+
+
+
+5. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/pricing/{id}
+
+
+http://localhost:8080/solcommerce/pdp-service/pricing/2
+
+
+Body
+
+{  
+   "id":2,
+   "productCode":"P2345873",
+   "pricingId":"P2345873",
+   "memberType":"G",
+   "currencyCode":"US$",
+   "priceType":"discounted",
+   "discuountAmount":1750.0,
+   "display":"Labor Day Bonanza Price",
+   "originalPrice":2750.0,
+   "discountedPrice":2000.0,
+   "status":"a"
+}
+
+Results
+
+{  
+   "id":2,
+   "productCode":"P2345873",
+   "pricingId":"P2345873",
+   "memberType":"G",
+   "currencyCode":"US$",
+   "priceType":"discounted",
+   "discuountAmount":1750.0,
+   "display":"Labor Day Bonanza Price",
+   "originalPrice":2750.0,
+   "discountedPrice":2000.0,
+   "status":"a"
+}
+
+6. Get The Order
+
+GET http://localhost:8080/solcommerce/pdp-service/pricing/bypage
+
+
+{  
+   "content":[  
+      {  
+         "id":2,
+         "productCode":"P2345873",
+         "pricingId":"P2345873",
+         "memberType":"G",
+         "currencyCode":"US$",
+         "priceType":"discounted",
+         "discuountAmount":1750.0,
+         "display":"Labor Day Bonanza Price",
+         "originalPrice":2750.0,
+         "discountedPrice":2000.0,
+         "status":"a"
+      },
+      {  
+         "id":1,
+         "productCode":"P2345872",
+         "pricingId":"P2345678",
+         "memberType":"G",
+         "currencyCode":"US$",
+         "priceType":"discounted",
+         "discuountAmount":2750.0,
+         "display":"Labor Day Bonanza Price",
+         "originalPrice":2750.0,
+         "discountedPrice":2000.0,
+         "status":"a"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":2,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":2,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   },
+   "first":true
+}
+
+7. Delete an Order
+
+DELETE http://localhost:8080/http://localhost:8080/solcommerce/pdp-service/pricing/2
+
+
+5. Test Get Page again
+
+{  
+   "content":[  
+      {  
+         "id":1,
+         "productCode":"P2345872",
+         "pricingId":"P2345678",
+         "memberType":"G",
+         "currencyCode":"US$",
+         "priceType":"discounted",
+         "discuountAmount":2750.0,
+         "display":"Labor Day Bonanza Price",
+         "originalPrice":2750.0,
+         "discountedPrice":2000.0,
+         "status":"a"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":1,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":1,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   },
+   "first":true
+}
+
+
+
+

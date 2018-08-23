@@ -21,10 +21,6 @@ public class PromoService {
 		this.promoRepository = promoRepository;
 	}
 	
-	public PromoService() {
-		super();
-		
-	}
 	
 	public Promo save(Promo promo) {
 		Promo promoSaved = promoRepository.save(promo);
@@ -34,7 +30,7 @@ public class PromoService {
 	
 	public Page<Promo> getPromoByPage(Integer pageNumber, Integer pageSize){
 		
-		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("houseNumber").descending());
+		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("promoCode").descending());
 		
 		
 		return promoRepository.findAll(pageable);		

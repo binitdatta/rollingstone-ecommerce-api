@@ -20,10 +20,7 @@ public class StorePickupService {
 		this.storePickupRepository = storePickupRepository;
 	}
 	
-	public StorePickupService() {
-		super();
-		
-	}
+
 	
 	public StorePickup save(StorePickup storePickup) {
 		StorePickup storePickupSaved = storePickupRepository.save(storePickup);
@@ -33,7 +30,7 @@ public class StorePickupService {
 	
 	public Page<StorePickup> getStorePickupByPage(Integer pageNumber, Integer pageSize){
 		
-		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("houseNumber").descending());
+		Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("storeNumber").descending());
 		
 		
 		return storePickupRepository.findAll(pageable);		

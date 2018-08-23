@@ -21,10 +21,6 @@ public class ProductService {
 		this.productRepository = productRepository;
 	}
 	
-	/*public ProductService() {
-		super();
-		
-	}*/
 	
 	public Product save(Product product) {
 		Product productSaved = productRepository.save(product);
