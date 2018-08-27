@@ -20,7 +20,7 @@ import com.rollingstone.domain.Promo;
 import com.rollingstone.service.PromoService;
 
 @RestController
-public class PromoController {
+public class PromoController extends AbstractRestController {
 
 Logger logger  = LoggerFactory.getLogger("PromoController");
 	

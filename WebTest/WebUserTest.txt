@@ -1,0 +1,148 @@
+How to test the Promo REST API
+
+https://github.com/FasterXML/jackson-databind/issues/95
+
+1. GET http://localhost:8080/solcommerce/pdp-service/account/user/{id}
+
+http://localhost:8080/solcommerce/pdp-service/account/user/1
+
+{  
+   "id":1,
+   "userName":"bdatta",
+   "firstName":"Binit",
+   "lastName":"Datta",
+   "sex":"M",
+   "memberType":"G",
+   "accountNumber":"AC000001",
+   "rgistrationDate":"2015-01-01"
+}
+
+2. https://www.baeldung.com/spring-boot-jsoncomponent
+
+3. Get All Products
+
+http://localhost:8080/solcommerce/pdp-service/account/user/bypage
+
+{  
+   "content":[  
+      {  
+         "id":2,
+         "userName":"ssmith",
+         "firstName":"Steve",
+         "lastName":"Smith",
+         "sex":"M",
+         "memberType":"G",
+         "accountNumber":"AC000002",
+         "rgistrationDate":"2014-12-31"
+      },
+      {  
+         "id":1,
+         "userName":"bdatta",
+         "firstName":"Binit",
+         "lastName":"Datta",
+         "sex":"M",
+         "memberType":"G",
+         "accountNumber":"AC000001",
+         "rgistrationDate":"2015-01-01"
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "totalPages":1,
+   "totalElements":2,
+   "last":true,
+   "size":20,
+   "number":0,
+   "numberOfElements":2,
+   "first":true,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+4. Create a new User
+
+POST http://localhost:8080/solcommerce/pdp-service/account/user/
+
+Body
+
+{  
+  
+   "userName":"ssmith",
+   "firstName":"Steve",
+   "lastName":"Smith",
+   "sex":"M",
+   "memberType":"G",
+   "accountNumber":"AC000002",
+   "rgistrationDate":"2015-01-01"
+}
+
+Results
+
+{  
+   "id":2,
+   "userName":"ssmith",
+   "firstName":"Steve",
+   "lastName":"Smith",
+   "sex":"M",
+   "memberType":"G",
+   "accountNumber":"AC000002",
+   "rgistrationDate":"2015-01-01T00:00:00.000+0000"
+}
+
+5. Update an Object
+
+PUT http://localhost:8080/solcommerce/pdp-service/account/user/{id}
+
+
+http://localhost:8080/solcommerce/pdp-service/account/user/2
+
+
+Body
+
+{
+  "id": 2,
+  "userName": "sjohnson",
+  "firstName": "Steve",
+  "lastName": "Johnson",
+  "sex": "M",
+  "memberType": "G",
+  "accountNumber": "AC000002",
+  "rgistrationDate": "2015-01-01T00:00:00.000+0000"
+}
+
+Results
+
+{  
+   "id":2,
+   "userName":"sjohnson",
+   "firstName":"Steve",
+   "lastName":"Johnson",
+   "sex":"M",
+   "memberType":"G",
+   "accountNumber":"AC000002",
+   "rgistrationDate":"2015-01-01T00:00:00.000+0000"
+}
+
+
+
+
+7. Delete an User
+
+DELETE http://localhost:8080/solcommerce/pdp-service/account/user/2
+
+
+
+
+
+

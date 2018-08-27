@@ -21,7 +21,7 @@ import com.rollingstone.domain.Shipping;
 import com.rollingstone.service.ShippingService;
 
 @RestController
-public class ShippingController {
+public class ShippingController extends AbstractRestController {
 Logger logger  = LoggerFactory.getLogger("ShippingController");
 	
 	ShippingService shippingService;

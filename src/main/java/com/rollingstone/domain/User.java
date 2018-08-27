@@ -34,6 +34,9 @@ public class User {
 	@Column(name = "MMEBER_TYPE", nullable = false)
 	private String memberType;
 	
+	@Column(name = "ACCOUNT_NUMBER", nullable = false)
+	private String accountNumber;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "REGISTRATION_DATE", unique = true, nullable = false, length = 10)
 	private Date rgistrationDate;
@@ -48,6 +51,15 @@ public class User {
 
 	public String getUserName() {
 		return userName;
+	}
+
+	
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	public void setUserName(String userName) {
@@ -111,15 +123,10 @@ public class User {
 	}
 
 	@Override
-	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", sex=" + sex + ", memberType=" + memberType + ", rgistrationDate=" + rgistrationDate + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((accountNumber == null) ? 0 : accountNumber.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -139,6 +146,11 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (accountNumber == null) {
+			if (other.accountNumber != null)
+				return false;
+		} else if (!accountNumber.equals(other.accountNumber))
+			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
@@ -176,10 +188,25 @@ public class User {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
+
+	public User(Long id, String userName, String firstName, String lastName, String sex, String memberType,
+			String accountNumber, Date rgistrationDate) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.sex = sex;
+		this.memberType = memberType;
+		this.accountNumber = accountNumber;
+		this.rgistrationDate = rgistrationDate;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", sex=" + sex + ", memberType=" + memberType + ", accountNumber=" + accountNumber
+				+ ", rgistrationDate=" + rgistrationDate + "]";
+	}
 	
 }

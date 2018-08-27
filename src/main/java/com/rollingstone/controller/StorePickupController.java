@@ -21,7 +21,7 @@ import com.rollingstone.domain.StorePickup;
 import com.rollingstone.service.StorePickupService;
 
 @RestController
-public class StorePickupController {
+public class StorePickupController extends AbstractRestController {
 	
 	Logger logger  = LoggerFactory.getLogger("StorePickupController");
 	

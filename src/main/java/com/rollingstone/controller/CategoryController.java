@@ -20,7 +20,7 @@ import com.rollingstone.domain.Category;
 import com.rollingstone.service.CategoryService;
 
 @RestController
-public class CategoryController {
+public class CategoryController extends AbstractRestController {
 
 	Logger logger  = LoggerFactory.getLogger("CategoryController");
 	

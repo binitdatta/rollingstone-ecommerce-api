@@ -20,7 +20,7 @@ import com.rollingstone.domain.Product;
 import com.rollingstone.service.ProductService;
 
 @RestController
-public class ProductController {
+public class ProductController extends AbstractRestController {
 
 	Logger logger = LoggerFactory.getLogger("ProductController");
 

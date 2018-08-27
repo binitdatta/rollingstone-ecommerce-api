@@ -21,7 +21,7 @@ import com.rollingstone.domain.ROOrder;
 import com.rollingstone.service.OrderService;
 
 @RestController
-public class OrderController {
+public class OrderController extends AbstractRestController {
 
 	Logger logger  = LoggerFactory.getLogger("OrderController");
 	

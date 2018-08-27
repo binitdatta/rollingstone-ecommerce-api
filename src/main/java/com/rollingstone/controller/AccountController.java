@@ -20,7 +20,7 @@ import com.rollingstone.domain.Account;
 import com.rollingstone.service.AccountService;
 
 @RestController
-public class AccountController {
+public class AccountController extends AbstractRestController {
 
 	Logger logger  = LoggerFactory.getLogger("AccountController");
 	

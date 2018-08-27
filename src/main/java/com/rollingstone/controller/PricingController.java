@@ -22,7 +22,7 @@ import com.rollingstone.domain.Pricing;
 import com.rollingstone.service.PricingService;
 
 @RestController
- public class PricingController {
+ public class PricingController extends AbstractRestController {
 
 	Logger logger  = LoggerFactory.getLogger("PricingController");
 	

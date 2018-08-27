@@ -22,7 +22,7 @@ import com.rollingstone.domain.Delivery;
 import com.rollingstone.service.DeliveryService;
 
 @RestController
-public class DeliveryController {
+public class DeliveryController extends AbstractRestController {
 
 	Logger logger  = LoggerFactory.getLogger("DeliveryController");
 	

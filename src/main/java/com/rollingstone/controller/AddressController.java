@@ -20,7 +20,7 @@ import com.rollingstone.domain.Address;
 import com.rollingstone.service.AddressService;
 
 @RestController
-public class AddressController {
+public class AddressController extends AbstractRestController {
 
 	Logger logger = LoggerFactory.getLogger("AddressController");
 

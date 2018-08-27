@@ -22,7 +22,7 @@ import com.rollingstone.domain.Cart;
 import com.rollingstone.service.CartService;
 
 @RestController
-public class CartController {
+public class CartController extends AbstractRestController {
 
 	Logger logger  = LoggerFactory.getLogger("CartController");
 	

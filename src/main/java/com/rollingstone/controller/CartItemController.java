@@ -19,7 +19,7 @@ import com.rollingstone.domain.IsolatedCartItem;
 import com.rollingstone.service.CartItemService;
 
 @RestController
-public class CartItemController {
+public class CartItemController extends AbstractRestController {
 
 	Logger logger  = LoggerFactory.getLogger("CartItemController");
 	

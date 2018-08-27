@@ -20,7 +20,7 @@ import com.rollingstone.domain.User;
 import com.rollingstone.service.UserService;
 
 @RestController
-public class UserController {
+public class UserController extends AbstractRestController {
 
 	Logger logger  = LoggerFactory.getLogger("UserController");
 	
@@ -39,7 +39,7 @@ public class UserController {
 		return user;
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("solcommerce/pdp-service/account/user/{id}")
 	public User get(@PathVariable("id") Long id) {
 		logger.info("Received ID is :"+id);
 		
