@@ -8,12 +8,12 @@ import com.rollingstone.domain.Account;
  * This is an optional class used in publishing application events. This can be
  * used to inject events into the Spring Boot audit management endpoint.
  */
-public class ServiceEvent extends ApplicationEvent {
+public class CategoryServiceEvent extends ApplicationEvent {
 	
 	Account eventAccount;
 	String eventType;
 	
-	public ServiceEvent(Object source) {
+	public CategoryServiceEvent(Object source) {
 		super(source);
 	}
 
@@ -38,7 +38,7 @@ public class ServiceEvent extends ApplicationEvent {
 		this.eventType = eventType;
 	}
 
-	public ServiceEvent(Object source, Account eventAccount, String eventType) {
+	public CategoryServiceEvent(Object source, Account eventAccount, String eventType) {
 		super(source);
 		this.eventAccount = eventAccount;
 		this.eventType = eventType;

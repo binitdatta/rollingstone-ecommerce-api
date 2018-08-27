@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rollingstone.domain.Address;
 import com.rollingstone.service.AddressService;
+import com.rollingstone.service.event.AddressServiceEvent;
 
 @RestController
 public class AddressController extends AbstractRestController {
@@ -43,6 +44,9 @@ public class AddressController extends AbstractRestController {
 		Address addressSaved = addressService.save(address);
 
 		logger.info("Address Saved :" + addressSaved.toString());
+		
+		eventPublisher.publishEvent(new AddressServiceEvent(this, addressSaved, "AddressCreated" ));
+		
 		return address;
 	}
 
